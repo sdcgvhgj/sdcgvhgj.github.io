@@ -18,14 +18,14 @@ a &amp;= b + c \\
 ]]></content>
   </entry>
   <entry>
-    <title>TEST</title>
-    <url>/2023/06/29/TEST-0/</url>
+    <title>test</title>
+    <url>/2023/06/28/test/</url>
     <content><![CDATA[
 ]]></content>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/2023/06/28/test/</url>
+    <title>TEST</title>
+    <url>/2023/06/29/TEST-0/</url>
     <content><![CDATA[
 ]]></content>
   </entry>
@@ -792,7 +792,8 @@ class="math inline">\(C\)</span></p>
 <h1 id="rounding-dynamic-programs">Rounding Dynamic Programs</h1>
 ]]></content>
       <categories>
-        <category>Courses</category>
+        <category>Course Notes</category>
+        <category>NJU</category>
       </categories>
   </entry>
 </search>
