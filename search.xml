@@ -18,12 +18,6 @@ a &amp;= b + c \\
 ]]></content>
   </entry>
   <entry>
-    <title>TEST</title>
-    <url>/2023/06/29/TEST-0/</url>
-    <content><![CDATA[
-]]></content>
-  </entry>
-  <entry>
     <title>Advanced Algorithm</title>
     <url>/2023/06/27/Advanced%20Algorithm/</url>
     <content><![CDATA[<h1 id="min-cut-and-max-cut">Min-Cut and Max-Cut</h1>
@@ -789,6 +783,12 @@ class="math inline">\(C\)</span></p>
         <category>Course Notes</category>
         <category>NJU</category>
       </categories>
+  </entry>
+  <entry>
+    <title>TEST</title>
+    <url>/2023/06/29/TEST-0/</url>
+    <content><![CDATA[
+]]></content>
   </entry>
   <entry>
     <title>test</title>
