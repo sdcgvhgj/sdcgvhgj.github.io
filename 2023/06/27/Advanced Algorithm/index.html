@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.sdcgvhgj.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Min-Cut and Max-Cut Karger&#39;s Min-Cut Algorithm pick an edge uniformly at random and contract it Theorem: \(\Pr[\textrm{a min-cut is returned}]\geq\frac{2}{n(n-1)}\) Proof:  a min-cut preserves">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Advanced Algorithm">
+<meta property="og:url" content="https://blog.sdcgvhgj.top/2023/06/27/Advanced%20Algorithm/index.html">
+<meta property="og:site_name" content="sdcgvhgj&#39;s blog">
+<meta property="og:description" content="Min-Cut and Max-Cut Karger&#39;s Min-Cut Algorithm pick an edge uniformly at random and contract it Theorem: \(\Pr[\textrm{a min-cut is returned}]\geq\frac{2}{n(n-1)}\) Proof:  a min-cut preserves">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-27T12:32:37.000Z">
+<meta property="article:modified_time" content="2023-06-29T12:18:46.045Z">
+<meta property="article:author" content="sdcgvhgj">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.sdcgvhgj.top/2023/06/27/Advanced%20Algorithm/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Advanced Algorithm | sdcgvhgj's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">sdcgvhgj's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.sdcgvhgj.top/2023/06/27/Advanced%20Algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="sdcgvhgj">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sdcgvhgj's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Advanced Algorithm
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-06-27 20:32:37" itemprop="dateCreated datePublished" datetime="2023-06-27T20:32:37+08:00">2023-06-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-06-29 20:18:46" itemprop="dateModified" datetime="2023-06-29T20:18:46+08:00">2023-06-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Courses/" itemprop="url" rel="index"><span itemprop="name">Courses</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="min-cut-and-max-cut">Min-Cut and Max-Cut</h1>
+<h3 id="kargers-min-cut-algorithm">Karger's Min-Cut Algorithm</h3>
+<p>pick an edge uniformly at random and contract it</p>
+<p><strong>Theorem:</strong></p>
+<p><span class="math inline">\(\Pr[\textrm{a min-cut is
+returned}]\geq\frac{2}{n(n-1)}\)</span></p>
+<p><strong>Proof:</strong></p>
+<ul>
+<li>a min-cut preserves when not contracted</li>
+<li><span class="math inline">\(C\)</span> is a min-cut <span
+class="math inline">\(\Rightarrow|C|\leq\frac{2|E|}{|V|}\)</span></li>
+</ul>
+<p><strong>Corollary:</strong></p>
+<p>The number of distinct min-cuts <span class="math inline">\(\leq
+n(n-1)/2\)</span></p>
+<h3 id="faster-min-cut">Faster Min-Cut</h3>
+<p>contract to <span class="math inline">\(t=n/\sqrt{2}+1\)</span>
+vertices and branch</p>
+<p>runs in <span class="math inline">\(O(n^2\log n)\)</span> time and
+succeeds with probability <span
+class="math inline">\(\Omega(\frac{1}{\log n})\)</span></p>
+<h3 id="greedy-cut">Greedy Cut</h3>
+<p>a vertex <span class="math inline">\(v\)</span> joins one of <span
+class="math inline">\(S,T\)</span> to maximize current <span
+class="math inline">\(E(S,T)\)</span></p>
+<p>1/2-approximation</p>
+<h3 id="random-cut">Random Cut</h3>
+<p><span class="math inline">\(\mathbf{E}[SOL]=|E|/2\)</span></p>
+<p>de-randomization by conditional expectation</p>
+<p>mutual independence, k-wise independence</p>
+<p>de-randomization by pairwise independence</p>
+<h1 id="fingerprinting">Fingerprinting</h1>
+<h3 id="checking-matrix-multiplication">Checking Matrix
+Multiplication</h3>
+<p><strong>Freivald’s Algorithm:</strong></p>
+<p>pick a uniform random <span
+class="math inline">\(r\in\{0,1\}^n\)</span> check whether <span
+class="math inline">\(ABr=Cr\)</span></p>
+<p>if <span class="math inline">\(AB\neq C\)</span> then <span
+class="math inline">\(\Pr[ABr=Cr]\leq \frac{1}{2}\)</span></p>
+<h3 id="polynomial-identity-testing">Polynomial Identity Testing</h3>
+<p><strong>Input:</strong> a polynomial <span
+class="math inline">\(f\in\mathbb{F}[x]\)</span> of degree <span
+class="math inline">\(d\)</span>.</p>
+<p><strong>Output:</strong> <span class="math inline">\(f\equiv
+0\)</span> ?</p>
+<p><strong>Fundamental Theorem of Algebra</strong></p>
+<p>Any non-zero <span class="math inline">\(d\)</span>-degree polynomial
+<span class="math inline">\(f\in\mathbb{F}[x]\)</span> has at most <span
+class="math inline">\(d\)</span> roots</p>
+<p><strong>Randomized algorithm (fingerprinting):</strong></p>
+<p>pick a uniform random <span class="math inline">\(r\in S\)</span>
+check if <span class="math inline">\(f(r)=0\)</span></p>
+<p>if <span class="math inline">\(f\not\equiv 0\)</span> then <span
+class="math inline">\(\Pr[f(r)=0]\leq\frac{d}{|S|}\)</span></p>
+<p><strong>Input:</strong> a polynomial <span
+class="math inline">\(f\in\mathbb{F}[x_1,...,x_n]\)</span> of degree
+<span class="math inline">\(d\)</span>.</p>
+<p><strong>Output:</strong> <span class="math inline">\(f\equiv
+0\)</span> ?</p>
+<p><strong>Randomized algorithm (fingerprinting):</strong></p>
+<p>pick <span class="math inline">\(r_1,...,r_n\in S\)</span> uniformly
+and independently at random, check if <span
+class="math inline">\(f(r_1,...,r_n)=0\)</span></p>
+<p><strong>Schwartz-Zippel Theorem</strong></p>
+<p><span class="math inline">\(f\not\equiv
+0\Longrightarrow\Pr[f(r_1,...,r_n)=0]\leq\frac{d}{|S|}\)</span></p>
+<h3 id="checking-distinctness">Checking Distinctness</h3>
+<p><strong>Input:</strong> two multisets <span
+class="math inline">\(A={a_1,...,a_n}\)</span> and <span
+class="math inline">\(B={b_1,...,b_n}\)</span> where elements in <span
+class="math inline">\([n]\)</span></p>
+<p><strong>Output:</strong> <span class="math inline">\(A=B\)</span>
+?</p>
+<p><span
+class="math inline">\(f_A(x)=\prod_{i=1}^{n}(x-a_i)\)</span></p>
+<p><span class="math inline">\(\textrm{FING}(A)=f_A(r),
+r\in\mathbb{Z}_p\)</span></p>
+<p>if <span class="math inline">\(A\neq B\)</span> :</p>
+<ul>
+<li><span class="math inline">\(f_A\equiv f_B\)</span> on <span
+class="math inline">\(\mathbb{Z}_p\)</span></li>
+<li><span class="math inline">\(f_A\not\equiv f_B\)</span> on <span
+class="math inline">\(\mathbb{Z}_p\)</span> but <span
+class="math inline">\(f_A(r)=f_B(r)\)</span></li>
+</ul>
+<h1 id="hashing-and-sketching">Hashing and Sketching</h1>
+<h3 id="count-distinct-elements">Count Distinct Elements</h3>
+<p><strong>Input:</strong> a sequence <span
+class="math inline">\(x_1,x_2,...,x_s\in U=[N]\)</span></p>
+<p><strong>Output:</strong> an estimation of <span
+class="math inline">\(n=|\{x_1,x_2,...,x_s\}|\)</span></p>
+<p><strong><span
+class="math inline">\((\epsilon,\delta)\)</span>-estimator:</strong> a
+random variable <span class="math inline">\(\hat{Z}\)</span> s.t. <span
+class="math display">\[
+\Pr[(1-\epsilon)n\leq\hat{Z}\leq(1+\epsilon)n]\geq1-\delta
+\]</span> <strong>Markov's Inequality</strong></p>
+<p>For nonnegative random variable <span
+class="math inline">\(X\)</span>, for any <span
+class="math inline">\(t&gt;0\)</span>, <span class="math display">\[
+\Pr[X\geq t]\leq\frac{\mathbb{E}[X]}{t}
+\]</span> <strong>Chebyshev's Inequality</strong></p>
+<p>For random variable <span class="math inline">\(X\)</span>, for any
+<span class="math inline">\(t&gt;0\)</span>, <span
+class="math display">\[
+\Pr[|X-\mathbb{E}[X]|\geq t]\leq\frac{\mathbf{Var}[X]}{t^2}
+\]</span> <strong>Min Sketch:</strong></p>
+<ul>
+<li><p>for each <span class="math inline">\(1\leq j\leq k\)</span>, let
+<span class="math inline">\(Y_j=\min_{1\leq i\leq
+s}h_j(x_i)\)</span></p></li>
+<li><p>return <span class="math inline">\(\hat{Z}=1/\bar{Y}-1\)</span>
+where <span
+class="math inline">\(\bar{Y}=\frac{1}{k}\sum_{j=1}^{k}Y_j\)</span></p></li>
+</ul>
+<p><span class="math display">\[
+\mathbb{E}[\bar{Y}]=\frac{1}{n+1},\mathbf{Var}[\bar{Y}]\leq\frac{1}{k(n+1)^2}\\
+\Pr\big[\hat{Z}&lt;(1-\epsilon)n\textrm{ or
+}\hat{Z}&gt;(1+\epsilon)n\big]
+\leq\Pr\left[|\bar{Y}-\mathbb{E}[\bar{Y}]|&gt;\frac{\epsilon/2}{n+1}\right]
+\leq\frac{4}{k\epsilon^2}
+\leq\delta
+\]</span></p>
+<p>Space cost: <span
+class="math inline">\(k=\lceil4/(\epsilon^2\delta)\rceil\)</span> real
+numbers in <span class="math inline">\([0,1]\)</span></p>
+<p>Storing <span class="math inline">\(k\)</span> idealized hash
+functions</p>
+<p><strong>Universal Hash Family:</strong></p>
+<p>A family <span class="math inline">\(\mathcal{H}\)</span> of hash
+functions in <span class="math inline">\(U\rightarrow[m]\)</span> is
+<strong><span class="math inline">\(k\)</span>-universal</strong> if for
+any distinct <span class="math inline">\(x_1,...,x_k\in U\)</span>,
+<span class="math display">\[
+\Pr_{h\in\mathcal{H}}[h(x_1)=\dots=h(x_k)]\leq\frac{1}{m^{k-1}}
+\]</span> Moreover, <span class="math inline">\(\mathcal{H}\)</span> is
+<strong>strongly <span
+class="math inline">\(k\)</span>-universal</strong> (<span
+class="math inline">\(k\)</span>-wise independent) if for any distinct
+<span class="math inline">\(x_1,...,x_k\in U\)</span> and any <span
+class="math inline">\(y_1,...,y_k\in[m]\)</span>, <span
+class="math display">\[
+\Pr_{h\in\mathcal{H}}\left[\bigwedge_{i=1}^kh(x_i)=y_i\right]=\frac{1}{m^k}
+\]</span> <strong>Linear Congruential Hashing</strong></p>
+<ul>
+<li><p>Represent <span
+class="math inline">\(U\subseteq\mathbb{Z}_p\)</span> for sufficiently
+large prime <span class="math inline">\(p\)</span></p></li>
+<li><p><span class="math inline">\(h_{a,b}(x)=((ax+b)\mod p)\mod
+m\)</span></p></li>
+<li><p><span
+class="math inline">\(\mathcal{H}=\{h_{a,b}|a\in\mathbb{Z}_p\backslash\{0\},b\in\mathbb{Z}_p\}\)</span></p></li>
+</ul>
+<p><strong>Theorem:</strong></p>
+<ul>
+<li><p>The linear congruential family <span
+class="math inline">\(\mathcal{H}\)</span> is 2-wise
+independent</p></li>
+<li><p>to achieve <span class="math inline">\(k\)</span>-wise
+independent: degree-<span class="math inline">\(k\)</span> polynomial in
+finite field with random coefficients</p></li>
+</ul>
+<p><strong>Flajolet-Martin Algorithm</strong></p>
+<p><strong>BJKST Algorithm</strong></p>
+<h3 id="frequency-estimation">Frequency Estimation</h3>
+<p><strong>Bloom Filters</strong></p>
+<p><strong>Data:</strong> a set <span class="math inline">\(S\)</span>
+of <span class="math inline">\(n\)</span> items <span
+class="math inline">\(x_1,x_2,...,x_n\in U=[N]\)</span></p>
+<p><strong>Query:</strong> an item <span class="math inline">\(x\in
+U\)</span></p>
+<p>Determine whether <span class="math inline">\(x\in S\)</span></p>
+<p>uniform &amp; independent hash function <span
+class="math inline">\(h_1,...,h_k:U\rightarrow[m]\)</span></p>
+<p><strong>Data Structure:</strong></p>
+<ul>
+<li>bit vector <span class="math inline">\(v\in\{0,1\}^m\)</span>,
+initially all 0's</li>
+<li>for each <span class="math inline">\(x_i\)</span>: set <span
+class="math inline">\(v[h_j(x_i)]=1\)</span> for all <span
+class="math inline">\(1\leq j\leq k\)</span></li>
+<li>Query x: "yes" iff <span class="math inline">\(v[h_j(x)]=1\)</span>
+for all <span class="math inline">\(1\leq j\leq k\)</span></li>
+</ul>
+<p>choose <span class="math inline">\(k=c\ln 2\)</span> and <span
+class="math inline">\(m=cn\)</span></p>
+<p>space cost: <span class="math inline">\(m=cn\)</span> bits</p>
+<p>time cost: <span class="math inline">\(k=c\ln 2\)</span></p>
+<p>false positive <span
+class="math inline">\(\leq(1-(1-1/m)^{kn})^k\approx(1-e^{-kn/m})^k=2^{-c\ln
+2}\leq(0.6185)^c\)</span></p>
+<p><strong>Count-Min Sketch</strong></p>
+<p><strong>Data:</strong> a sequence <span
+class="math inline">\(x_1,x_2,...,x_n\in U=[N]\)</span></p>
+<p><strong>Query:</strong> an item <span class="math inline">\(x\in
+U\)</span></p>
+<p>Estimate the frequency <span
+class="math inline">\(f_x=|\{i:x_i=x\}|\)</span> of <span
+class="math inline">\(x\)</span></p>
+<p><span class="math inline">\(\hat{f}_x\)</span> : estimation of <span
+class="math inline">\(f_x\)</span> within additive error</p>
+<p><span class="math inline">\(\Pr\big[|\hat{f}_x-f_x|\geq\epsilon
+n\big]\leq\delta\)</span></p>
+<p><span class="math inline">\(k\)</span> independent 2-universal hash
+functions <span class="math inline">\(h_1,...,h_k:[N]\rightarrow
+[m]\)</span></p>
+<ul>
+<li><span class="math inline">\(\mathrm{CMS}[k][m]\)</span>, initialized
+to all 0's</li>
+<li>Upon each <span class="math inline">\(x_i\)</span>: <span
+class="math inline">\(\mathrm{CMS}[j][h_j(x_i)]++\)</span> for all <span
+class="math inline">\(1\leq j\leq k\)</span></li>
+<li>Query <span class="math inline">\(x\)</span>: return <span
+class="math inline">\(\hat{f}_x=\min_{1\leq j\leq
+k}\mathrm{CMS}[j][h_j(x)]\)</span></li>
+</ul>
+<p><span
+class="math inline">\(\mathbb{E}\big[\mathrm{CMS}[j][h_j(x)]\big]=f_x+\sum_{y}f_y\Pr[h_j(y)=h_j(x)]\leq
+f_x+\frac{n}{m}\)</span></p>
+<p><span class="math inline">\(\Pr\big[|\hat{f}_x-f_x|\geq\epsilon
+n\big]=\Pr\left[\forall1\leq j\leq
+k:\mathrm{CMS}[j][h_j(x)\right]-f_x\geq\epsilon n]\leq
+\left(\frac{1}{\epsilon m}\right)^k\)</span></p>
+<p>choose <span class="math inline">\(m=\lceil e/\epsilon\rceil\)</span>
+and <span class="math inline">\(k=\lceil\ln(1/\delta)\rceil\)</span></p>
+<p>space cost: <span class="math inline">\(O(\epsilon^{-1}\log
+(1/\delta)\log n)\)</span> bits</p>
+<p>time cost: <span class="math inline">\(O(\log(1/\delta))\)</span></p>
+<p><span class="math inline">\(O(\log(1/\delta)\log N)\)</span> bits for
+hash functions</p>
+<h1 id="balls-into-bins">Balls into Bins</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">1-1</th>
+<th style="text-align: center;">birthday paradox</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>on-to</strong></td>
+<td style="text-align: center;"><strong>coupon collector</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>pre-image size</strong></td>
+<td style="text-align: center;"><strong>occupancy problem</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="birthday-paradox">Birthday Paradox</h3>
+<p><span class="math inline">\(n\)</span> balls are thrown into <span
+class="math inline">\(m\)</span> bins</p>
+<p>event <span class="math inline">\(\mathcal{E}\)</span>: each bin
+receives <span class="math inline">\(\leq 1\)</span> balls</p>
+<p><span
+class="math inline">\(\Pr[\mathcal{E}]=\prod_{i=0}^{n-1}(1-\frac{i}{m})\approx
+e^{-n^2/2m}\)</span></p>
+<p><span
+class="math inline">\(n=\sqrt{2m\ln(1/p)}\Longrightarrow\Pr[\mathcal{E}]=(1\pm
+o(1))p\)</span></p>
+<p>In a class of <span class="math inline">\(n&gt;57\)</span> students,
+with <span class="math inline">\(&gt;99\%\)</span> probability, there
+are two students with the same birthday.</p>
+<p><strong>Perfect Hashing</strong></p>
+<p><strong>Data:</strong> a set <span class="math inline">\(S\)</span>
+of <span class="math inline">\(n\)</span> items <span
+class="math inline">\(x_1,x_2,...,x_n\in U=[N]\)</span></p>
+<p><strong>Query:</strong> an item <span class="math inline">\(x\in
+U\)</span></p>
+<p>Determine whether <span class="math inline">\(x\in S\)</span></p>
+<p>Birthday Paradox by 2-universal hashing:</p>
+<p><span class="math inline">\(\mathbb{E}[\mathrm{\#\ of\
+collisions}]=\sum_{i&lt;j}\Pr[X_i=X_j]\leq\binom{n}{2}\frac{1}{m}\)</span></p>
+<p><span
+class="math inline">\(n\leq\sqrt{2m\epsilon}\Longrightarrow\Pr[\neg\mathcal{E}]=\Pr[Y\geq
+1]\leq\mathbb{E}[Y]\leq\epsilon\)</span></p>
+<p><strong>FKS Perfect Hashing</strong></p>
+<p>Query(x):</p>
+<ul>
+<li>retrieve primary hash <span class="math inline">\(h\)</span></li>
+<li>go to bucket <span class="math inline">\(i=h(x)\)</span></li>
+<li>retrieve secondary hash <span
+class="math inline">\(h_i\)</span></li>
+<li>check whether <span
+class="math inline">\(T_i[h_i(x)]=x\)</span></li>
+</ul>
+<p>Size of the <span class="math inline">\(i\)</span>-th bin: <span
+class="math inline">\(|B_i|\)</span></p>
+<p><span class="math inline">\(\mathrm{\#\ of\
+collision}=\frac{1}{2}\sum|B_i|(|B_i|-1)\Longrightarrow\mathbb{E}\bigg[\sum|B_i|^2\bigg]=\frac{n(n-1)}{m}+n\)</span></p>
+<p><span class="math inline">\(\exist h\)</span> from a 2-universal
+family s.t. the total space cost is <span
+class="math inline">\(O(n)\)</span></p>
+<p><span class="math inline">\(O(n\log N)\)</span> space, <span
+class="math inline">\(O(1)\)</span> time</p>
+<h3 id="coupon-collector">Coupon Collector</h3>
+<p><span class="math inline">\(X\)</span>: number of balls thrown to
+make all the <span class="math inline">\(n\)</span> bins nonempty</p>
+<p><span
+class="math inline">\(\mathbb{E}[X]=\sum_{i=1}^{n}\frac{n}{n-i+1}=n\sum_{i=1}^{n}\frac{1}{i}=nH(n)\)</span></p>
+<p>expected <span class="math inline">\(n\ln n+O(n)\)</span> balls</p>
+<p><strong>Theorem:</strong></p>
+<p>For <span class="math inline">\(c&gt;0\)</span>, <span
+class="math inline">\(\Pr[X\geq n\ln n+cn]\leq e^{-c}\)</span></p>
+<p><strong>Proof:</strong></p>
+<p>For one bin, it misses all balls with probability:</p>
+<p><span class="math inline">\(\left(1-\frac{1}{n}\right)^{n\ln
+n+cn}&lt;e^{-(\ln n+c)}&lt;\frac{1}{ne^c}\)</span></p>
+<p>Then it can be proved by union bound.</p>
+<h3 id="occupancy-problem">Occupancy Problem</h3>
+<p><span class="math inline">\(m\)</span> balls are thrown into <span
+class="math inline">\(n\)</span> bins</p>
+<p><span class="math inline">\(X_i:\)</span> number of balls in the
+<span class="math inline">\(i\)</span>-th bin</p>
+<p><span class="math inline">\(\forall
+i:\mathbb{E}[X_i]=\frac{m}{n}\)</span></p>
+<p><strong>Theorem:</strong></p>
+<p>With high probability, the maximum load is</p>
+<ul>
+<li><span class="math inline">\(O\left(\frac{\log n}{\log \log
+n}\right)\)</span> when <span class="math inline">\(m=n\)</span></li>
+<li><span class="math inline">\(O(\frac{m}{n})\)</span> when <span
+class="math inline">\(m\geq n\ln n\)</span></li>
+</ul>
+<p><strong>Proof:</strong></p>
+<p><span class="math inline">\(\Pr[X_i\geq L]\leq
+\binom{m}{L}\frac{1}{n^L}\leq\frac{m^L}{L!n^L}\leq\left(\frac{em}{n}\right)^L\frac{1}{L^L}\)</span></p>
+<p>when <span class="math inline">\(m=n\)</span>, this probability <span
+class="math inline">\(\leq\left(\frac{e}{L}\right)^L\leq\frac{1}{n^2}\)</span>
+for <span class="math inline">\(L=\frac{3\ln n}{\ln\ln n}\)</span></p>
+<p>when <span class="math inline">\(m\geq n\ln n\)</span>, this
+probability <span class="math inline">\(\leq
+e^{-L}\leq\frac{1}{n^2}\)</span> for <span
+class="math inline">\(L=\frac{e^2m}{n}\geq e^2\ln n\)</span></p>
+<p><strong>Theorem:</strong></p>
+<p>With high probability, the maximum load is</p>
+<ul>
+<li><span class="math inline">\(\Omega\left(\frac{\log n}{\log \log
+n}\right)\)</span> when <span class="math inline">\(m=n\)</span></li>
+</ul>
+<p><strong>Proof:</strong></p>
+<p>Exactly (?), <span
+class="math inline">\(X_1,...,X_n\sim\mathrm{Bin}(m,1/n)\)</span>
+subject to <span class="math inline">\(\sum_{i=1}^{n}X_i=m\)</span></p>
+<p>Heuristically, treat <span class="math inline">\(X_1,...,X_n\)</span>
+as i.i.d. <span
+class="math inline">\(Y_1,...,Y_n\sim\mathrm{Pois}(m/n)\)</span></p>
+<ul>
+<li><strong>Theorem:</strong> <span class="math inline">\(\forall
+m_1,...,m_n\in\N\)</span> s.t. <span
+class="math inline">\(\sum_{i=1}^{n}m_i=m\)</span></li>
+</ul>
+<p><span class="math display">\[
+\Pr\left[\bigwedge_{i=1}^nX_i=m_i\right]=\Pr\left[\bigwedge_{i=1}^nY_i=m_i\bigg|\sum_{i=1}^nY_i=m\right]
+\]</span></p>
+<ul>
+<li><strong>Theorem (Poisson Approximation):</strong> <span
+class="math inline">\(\forall\)</span> nonnegative function <span
+class="math inline">\(f\)</span></li>
+</ul>
+<p><span class="math display">\[
+\mathbb{E}[f(X_1,...,X_n)]\leq e\sqrt{m}\cdot\mathbb{E}[f(Y_1,...,Y_n)]
+\]</span></p>
+<p><strong>Power of Two Choices</strong></p>
+<p>When <span class="math inline">\(n\)</span> balls are thrown into
+<span class="math inline">\(n\)</span> bins using the two-choice
+paradigm, the maximum load is <span class="math inline">\(\ln\ln n/\ln
+2+\Theta(1)\)</span> w.h.p.</p>
+<p><strong>Cuckoo Hashing</strong></p>
+<h1 id="concentration-of-measure">Concentration of Measure</h1>
+<h3 id="chernoff-hoeffding-bounds">Chernoff-Hoeffding Bounds</h3>
+<p><strong>Chernoff Bound</strong></p>
+<p>For independent (or negatively associated) <span
+class="math inline">\(X_1,...,X_n\in\{0,1\}\)</span> with <span
+class="math display">\[
+X=\sum_{i=1}^{n}X_i\mathrm{\ and\ }\mu=\mathbb{E}[X]
+\]</span> For any <span class="math inline">\(\delta&gt;0\)</span>,
+<span class="math display">\[
+\Pr[X\geq(1+\delta)\mu]\leq\left(\frac{e^\delta}{(1+\delta)^{(1+\delta)}}\right)^\mu\leq\exp\left(-\frac{\mu\delta^2}{3}\right)
+\]</span> For any <span class="math inline">\(0&lt;\delta&lt;1\)</span>,
+<span class="math display">\[
+\Pr[X\leq(1-\delta)\mu]\leq\left(\frac{e^{-\delta}}{(1-\delta)^{(1-\delta)}}\right)^\mu\leq\exp\left(-\frac{\mu\delta^2}{2}\right)
+\]</span> For <span class="math inline">\(t\geq 2e\mu\)</span>: <span
+class="math display">\[
+\Pr[X\geq t]\leq 2^{-t}
+\]</span> For any <span class="math inline">\(t&gt;0\)</span>: <span
+class="math display">\[
+\Pr[X\geq\mathbb{E}[X]+t]\leq\exp\left(-\frac{2t^2}{n}\right)\\
+\Pr[X\leq\mathbb{E}[X]-t]\leq\exp\left(-\frac{2t^2}{n}\right)
+\]</span> A party of <span class="math inline">\(O(\sqrt{n\log
+n})\)</span> can manipulate a vote w.h.p.</p>
+<p><strong>Hoeffding Bound</strong></p>
+<p>For <span class="math inline">\(X=\sum_{i=1}^nX_i\)</span>, where
+<span class="math inline">\(X_i\in[a_i,b_i],1\leq i\leq n\)</span>, are
+independent (or negatively associated),</p>
+<p>for any <span class="math inline">\(t&gt;0\)</span>: <span
+class="math display">\[
+\Pr[X\geq\mathbb{E}[X]+t]\leq\exp\left(-\frac{2t^2}{\sum_{i=1}^{n}(b_i-a_i)^2}\right)\\
+\Pr[X\leq\mathbb{E}[X]-t]\leq\exp\left(-\frac{2t^2}{\sum_{i=1}^{n}(b_i-a_i)^2}\right)
+\]</span> <strong>Sub-Gaussian Random Variables</strong></p>
+<p>A centered (<span class="math inline">\(\mathbb{E}[Y]=0\)</span>)
+random variable <span class="math inline">\(Y\)</span> is said to be
+sub-Gaussian with variance factor <span
+class="math inline">\(\nu\)</span> (denoted <span
+class="math inline">\(Y\in\mathcal{G}(\nu)\)</span>) if <span
+class="math display">\[
+\mathbb{E}[e^{\lambda Y}]\leq\exp\left(\frac{\lambda^2\nu}{2}\right)
+\]</span> <strong>Chernoff-Hoeffding Bound:</strong></p>
+<p>For <span class="math inline">\(Y=\sum_{i=1}^nY_i\)</span>, where
+<span class="math inline">\(Y_i\in\mathcal{G}(\nu_i)\)</span>, <span
+class="math inline">\(1\leq i\leq n\)</span>, are independent (or
+negatively associated) and centered (i.e. <span
+class="math inline">\(\mathbb{E}[Y_i]=0\)</span>),</p>
+<p>for any <span class="math inline">\(t&gt;0\)</span>: <span
+class="math display">\[
+\Pr[Y\geq t]\leq\exp\left(-\frac{t^2}{2\sum_{i=1}^{n}\nu_i}\right)\\
+\Pr[Y\leq-t]\leq\exp\left(-\frac{t^2}{2\sum_{i=1}^{n}\nu_i}\right)
+\]</span> <strong>Poisson Tails</strong></p>
+<p>For <span class="math inline">\(Y\sim\mathrm{Pois}(\mu)\)</span>,
+<span class="math display">\[
+k&gt;\mu\Longrightarrow\Pr[X&gt;k]&lt;e^{-\mu}\left(\frac{e\mu}{k}\right)^k\\
+k&lt;\mu\Longrightarrow\Pr[X&lt;k]&lt;e^{-\mu}\left(\frac{e\mu}{k}\right)^k
+\]</span></p>
+<h3 id="the-method-of-bounded-differences">The Method of Bounded
+Differences</h3>
+<p><strong>McDiarmid’s Inequality:</strong></p>
+<p>For independent <span class="math inline">\(X_1,X_2,...,X_n\)</span>,
+if <span class="math inline">\(n\)</span>-variate function <span
+class="math inline">\(f\)</span> satisfies the <strong>Lipschitz
+condition</strong>: for every <span class="math inline">\(1\leq i\leq
+n\)</span>, <span class="math display">\[
+|f(x_1,...,x_n)-f(x_1,...,x_{i-1},y_i,x_{i+1},...,x_n)|\leq c_i
+\]</span> for any possible <span
+class="math inline">\(x_1,...,x_n\)</span> and <span
+class="math inline">\(y_i\)</span>,</p>
+<p>then for any <span class="math inline">\(t&gt;0\)</span>: <span
+class="math display">\[
+\Pr\bigg[|f(X_1,...,X_n)-\mathbb{E}[f(X_1,...,X_n)|\geq t\bigg]\leq
+2\exp\left(-\frac{t^2}{2\sum_{i=1}^nc_i^2}\right)
+\]</span></p>
+<ul>
+<li><p>Chernoff: sum of Boolean variables, 1-Lipschitz</p></li>
+<li><p>Hoeffding: sum of <span
+class="math inline">\([a_i,b_i]\)</span>-bounded variables, <span
+class="math inline">\((b_i-a_i)\)</span>-Lipschitz</p></li>
+<li><p>Balls into Bins:</p>
+<ul>
+<li><span class="math inline">\(Y:\)</span> number of empty bins</li>
+<li><span class="math inline">\(Y\)</span> is 1-Lipschitz with respect
+to <span class="math inline">\(m\)</span> variables, where <span
+class="math inline">\(m\)</span> is the number of balls</li>
+</ul></li>
+<li><p>Pattern Matching</p>
+<ul>
+<li><span class="math inline">\(Y:\)</span> number of substrings of
+<span class="math inline">\(X\in\Sigma^n\)</span> matching the pattern
+<span class="math inline">\(\pi\in\Sigma^k\)</span></li>
+<li><span class="math inline">\(Y\)</span> is <span
+class="math inline">\(k\)</span>-Lipschitz with respect to <span
+class="math inline">\(n\)</span> variables <span
+class="math inline">\(X_1,...,X_n\)</span></li>
+</ul></li>
+<li><p>Sprinkling Points on Hypercube</p>
+<ul>
+<li><span class="math inline">\(Y:\)</span> shortest Hamming distance
+from <span class="math inline">\(X\in\{0,1\}^n\)</span> to <span
+class="math inline">\(S\subseteq\{0,1\}^n\)</span></li>
+<li><span class="math inline">\(Y\)</span> is 1-Lipschitz with respect
+to <span class="math inline">\(n\)</span> variables <span
+class="math inline">\(X_1,...,X_n\)</span></li>
+</ul></li>
+</ul>
+<p><strong>Martingale</strong></p>
+<p>A sequence of random variables <span
+class="math inline">\(Y_0,Y_1,...\)</span> is a martingale with respect
+to <span class="math inline">\(X_0,X_1,...\)</span> if for all <span
+class="math inline">\(t\geq 0\)</span>,</p>
+<ul>
+<li><span class="math inline">\(Y_t\)</span> is a function of <span
+class="math inline">\(X_0,...,X_t\)</span></li>
+<li><span
+class="math inline">\(\mathbb{E}[Y_{t+1}|X_0,X_1,...,X_t]=Y_t\)</span></li>
+</ul>
+<p>A fair gambling game:</p>
+<ul>
+<li><span class="math inline">\(X_i:\)</span> outcome of the <span
+class="math inline">\(i\)</span>-th betting</li>
+<li><span class="math inline">\(Y_i:\)</span> capital after the <span
+class="math inline">\(i\)</span>-th betting</li>
+</ul>
+<p><strong>Azuma's Inequality:</strong></p>
+<p>For martingale <span class="math inline">\(Y_0,Y_1,...\)</span> (with
+respect to <span class="math inline">\(X_0,X_1,...\)</span>) satisfying:
+<span class="math display">\[
+\forall i\geq 0,\quad |Y_i-Y_{i-1}|\leq c_i
+\]</span> for any <span class="math inline">\(n\geq 1\)</span> and <span
+class="math inline">\(t&gt;0\)</span> : <span class="math display">\[
+\Pr\bigg[\big|Y_n-Y_0\big|\geq t\bigg]\leq
+2\exp\left(-\frac{t^2}{2\sum_{i=1}^nc_i^2}\right)
+\]</span> Your capital does not change too fast if:</p>
+<ul>
+<li>the game is fair (martingale)</li>
+<li>payoff for each gambling is bounded</li>
+</ul>
+<p><strong>Doob Martingale</strong></p>
+<p>A Doob sequence <span class="math inline">\(Y_0,Y_1,...,Y_n\)</span>
+of an <span class="math inline">\(n\)</span>-variate function <span
+class="math inline">\(f\)</span> with respect to a random vector <span
+class="math inline">\((X_1,...,X_n)\)</span> is: <span
+class="math display">\[
+\forall 0\leq i\leq n,\quad
+Y_i=\mathbb{E}\big[f(X_1,...,X_n)|X_1,...,X_i\big]
+\]</span> <strong>Theorem:</strong> The Doob sequence <span
+class="math inline">\(Y_0,Y_1,...,Y_n\)</span> is a martingale with
+respect to <span class="math inline">\(X_1,...,X_n\)</span>.</p>
+<p>Then McDiarmid’s Inequality can be proved using Azuma's Inequality of
+a Doob Martingale with respect to independent random variables.</p>
+<h1 id="dimension-reduction">Dimension Reduction</h1>
+<h3 id="johnson-lindenstrauss-theorem">Johnson-Lindenstrauss
+Theorem</h3>
+<p><strong>Theorem:</strong></p>
+<p><span class="math inline">\(\forall 0&lt;\epsilon&lt;1\)</span>, for
+any set <span class="math inline">\(S\)</span> of <span
+class="math inline">\(n\)</span> points from <span
+class="math inline">\(\R^d\)</span>, there is a <span
+class="math inline">\(\phi:\R^d\rightarrow\R^k\)</span> with <span
+class="math inline">\(k=O(\epsilon^{-2}\log n)\)</span>, such that <span
+class="math inline">\(\forall x,y\in S:\)</span> <span
+class="math display">\[
+(1-\epsilon)||x-y||_2^2\leq||\phi(x)-\phi(y)||_2^2\leq(1+\epsilon)||x-y||_2^2
+\]</span> Actually, <span class="math inline">\(\phi(x)=Ax\)</span></p>
+<p>The probabilistic method: for random <span
+class="math inline">\(A\in\R^{k\times d}\)</span> <span
+class="math display">\[
+\Pr\big[\forall x,y\in
+S:(1-\epsilon)||x-y||_2^2\leq||\phi(x)-\phi(y)||_2^2\leq(1+\epsilon)||x-y||_2^2\big]=1-O\bigg(\frac{1}{n}\bigg)
+\]</span> Efficient construction of random <span
+class="math inline">\(A\in\R^{k\times d}\)</span>:</p>
+<ul>
+<li>projection onto uniform random <span
+class="math inline">\(k\)</span>-dimensional subspace</li>
+<li>independent Gaussian entries</li>
+<li>i.i.d. -1/+1 entries</li>
+</ul>
+<p><strong>JLT (i.i.d. Gaussian entries)</strong></p>
+<p>entries of <span class="math inline">\(A\)</span> are chosen i.i.d.
+from <span class="math inline">\(\mathcal{N}(0,1/k)\)</span></p>
+<p><strong>JLT (uniform k-dim subspace)</strong></p>
+<p>the <span class="math inline">\(k\)</span> rows <span
+class="math inline">\(A_1,...,A_k\)</span> of <span
+class="math inline">\(A\in\R^{k\times d}\)</span> are orthogonal unit
+vectors <span class="math inline">\(\in\R^d\)</span> chosen uniformly at
+random and let <span
+class="math inline">\(y_i=\sqrt{\frac{d}{k}}Ax_i\)</span></p>
+<p>(?)</p>
+<h3 id="nearest-neighbor-search">Nearest Neighbor Search</h3>
+<p><strong>Data:</strong> <span class="math inline">\(n\)</span> points
+<span class="math inline">\(y_1,y_2,...,y_n\in X\)</span></p>
+<p><strong>Query:</strong> a point <span class="math inline">\(x\in
+X\)</span></p>
+<p>Find the data-point <span class="math inline">\(y_i\)</span> that is
+closest to <span class="math inline">\(x\)</span>.</p>
+<p><strong><span class="math inline">\(c\)</span>-ANN (Approximate
+Nearest Neighbor)</strong>:</p>
+<p>Find a <span class="math inline">\(y_i\)</span> such that <span
+class="math inline">\(\mathrm{dist}(x,y_i)\leq c\cdot\min_{1\leq j\leq
+n}\mathrm{dist}(x,y_j)\)</span></p>
+<p><strong><span class="math inline">\((c,r)\)</span>-ANN (Approximate
+Near Neighbor):</strong></p>
+<p>return a <span class="math inline">\(y_i\)</span> that <span
+class="math inline">\(\mathrm{dist}(x,y_i)\leq c\cdot r\)</span> if
+<span class="math inline">\(\exist y_j\)</span> s.t. <span
+class="math inline">\(\mathrm{dist}(x,y_j)\leq r\)</span></p>
+<p>​ "no" if <span class="math inline">\(\forall y_i,
+\mathrm{dist}(x,y_i)&gt;c\cdot r\)</span></p>
+<p>​ arbitrary if otherwise</p>
+<p>if <span class="math inline">\((\sqrt{c},r)\)</span>-ANN can be
+solved for any <span class="math inline">\(r\)</span>, then <span
+class="math inline">\(c\)</span>-ANN can be solved by using it <span
+class="math inline">\(\log_\sqrt{c}(D_\max/D_\min)\)</span> times</p>
+<p><strong><span class="math inline">\((c,r)\)</span>-ANN in Hamming
+space (by Dimension Reduction)</strong></p>
+<ul>
+<li><p>sample <span class="math inline">\(k\times d\)</span> Boolean
+matrix <span class="math inline">\(A\)</span> with i.i.d. entries <span
+class="math inline">\(\in\mathrm{Bernoulli}(p)\)</span></p></li>
+<li><p>let <span class="math inline">\(z_i=Ay_i\in\{0,1\}^k\)</span> on
+finite field <span
+class="math inline">\(\mathrm{GF}(2)\)</span></p></li>
+<li><p>store all <span class="math inline">\(s\)</span>-balls <span
+class="math inline">\(B_s(u)=\{y_i\mid\mathrm{dist}(u,z_i)\leq
+s\}\)</span> for all <span
+class="math inline">\(u\in\{0,1\}^k\)</span></p></li>
+<li><p>To answer query <span
+class="math inline">\(x\in\{0,1\}^d:\)</span></p>
+<ul>
+<li>retrieve <span class="math inline">\(B_s(Ax)\)</span></li>
+<li>if <span class="math inline">\(B_s(Ax)=\empty\)</span> return
+"no"</li>
+<li>else return any <span class="math inline">\(y_i\in
+B_s(Ax)\)</span></li>
+</ul></li>
+</ul>
+<p>space: <span class="math inline">\(O(n2^k)\)</span> query time: <span
+class="math inline">\(O(kd)\)</span></p>
+<p>for suitable <span class="math inline">\(k=O(\log n)\)</span>, <span
+class="math inline">\(p\)</span> and <span
+class="math inline">\(s\)</span>: <span class="math display">\[
+\forall x,y\in\{0,1\}^d:\quad
+\mathrm{dist}(x,y)\leq r\quad\quad\
+\Rightarrow\Pr[\mathrm{dist}(Ax,Ay)&gt;s]&lt;1/n^2\\
+\quad\quad\quad\quad\quad\quad\quad\quad\  \mathrm{dist}(x,y)&gt; c\cdot
+r\quad\Rightarrow\Pr[\mathrm{dist}(Ax,Ay)\leq s]&lt;1/n^2
+\]</span></p>
+<h3 id="locality-sensitive-hashing">Locality Sensitive Hashing</h3>
+<p>A random <span class="math inline">\(h:X\rightarrow U\)</span> is an
+<strong><span class="math inline">\((r,cr,p,q)\)</span>-LSH</strong> if
+<span class="math inline">\(\forall x,y\in X:\)</span> <span
+class="math display">\[
+\mathrm{dist}(x,y)\leq r\Longrightarrow\Pr[h(x)=h(y)]\geq p\\
+\mathrm{dist}(x,y)&gt;c\cdot r\Longrightarrow\Pr[h(x)=h(y)]\leq q
+\]</span></p>
+<p>an <span class="math inline">\((r,cr,p,q)\)</span>-LSH <span
+class="math inline">\(h:X\rightarrow U\)</span> <span
+class="math inline">\(\Longrightarrow\)</span> an <span
+class="math inline">\((r,cr,p^k,q^k)\)</span>-LSH <span
+class="math inline">\(h:X\rightarrow U^k\)</span></p>
+<p><strong><span class="math inline">\((c,r)\)</span>-ANN by
+LSH</strong></p>
+<p>suppose we have <span
+class="math inline">\((r,cr,p^*,1/n)\)</span>-LSH <span
+class="math inline">\(g:X\rightarrow U\)</span></p>
+<p><strong>Hash functions:</strong></p>
+<ul>
+<li>i.i.d. instances <span class="math inline">\(g_1,\ldots,g_l\)</span>
+of <span class="math inline">\(g\)</span>, where <span
+class="math inline">\(l=1/p^*\)</span></li>
+</ul>
+<p><strong>Data structure:</strong></p>
+<ul>
+<li><span class="math inline">\(l\)</span> sorted tables</li>
+<li>in table-<span class="math inline">\(j\)</span>: sort <span
+class="math inline">\(y_1,y_1,\ldots,y_n\)</span> according to <span
+class="math inline">\(g_j(y_i)\)</span></li>
+</ul>
+<p><strong>Upon query <span class="math inline">\(x\in
+X\)</span>:</strong></p>
+<ul>
+<li>find <span class="math inline">\(10l\)</span> such <span
+class="math inline">\(y_i\)</span> that <span
+class="math inline">\(\exist j,g_j(x)=g_j(y_i)\)</span> by binary
+search</li>
+<li>if encounter a <span class="math inline">\(y_i\)</span> that <span
+class="math inline">\(\mathrm{dist}(x,y_i)\leq c\cdot r\)</span> return
+this <span class="math inline">\(y_i\)</span></li>
+<li>else return "no"</li>
+</ul>
+<p>space: <span class="math inline">\(O(n/p^*)\)</span> time: <span
+class="math inline">\(O((\log n)/p^*)\)</span> one-sided error
+&lt;0.5</p>
+<p>suppose we have <span class="math inline">\((r,cr,p,q)\)</span>-LSH
+<span class="math inline">\(h:X\rightarrow U\)</span>,</p>
+<p>then we have <span
+class="math inline">\((r,cr,n^{-\rho},1/n)\)</span>-LSH <span
+class="math inline">\(g:X\rightarrow U^k\)</span>,</p>
+<p>where <span class="math inline">\(\rho=\frac{\log p}{\log
+q}\)</span></p>
+<p>then we can solve <span class="math inline">\((c,r)\)</span>-ANN
+with</p>
+<p>space: <span class="math inline">\(O(n^{1+\rho})\)</span> time: <span
+class="math inline">\(O(n^\rho\cdot\log n)\)</span> one-sided error
+&lt;0.5</p>
+<p><strong><span class="math inline">\((c,r)\)</span>-ANN in Hamming
+space (by LSH)</strong></p>
+<p><span class="math inline">\(\forall x\in\{0,1\}^d:h(x)=x_i\)</span>
+for uniform random <span class="math inline">\(i\in[d]\)</span></p>
+<p><span class="math inline">\(h:\{0,1\}^d\rightarrow \{0,1\}\)</span>
+is an <span class="math inline">\((r,cr,1-r/d,1-cr/d)\)</span>-LSH</p>
+<p><span
+class="math inline">\(\rho=\frac{\log(1-r/d)}{\log(1-cr/d)}\leq\frac{1}{c}\)</span></p>
+<p>space: <span class="math inline">\(O(n^{1+1/c})\)</span> time: <span
+class="math inline">\(O(n^{1/c}\cdot\log n)\)</span> one-sided error
+&lt;0.5</p>
+<h1 id="greedy-and-local-search">Greedy and Local Search</h1>
+<h3 id="max-cut">Max-Cut</h3>
+<p><strong>Greedy Algorithm for Max-Cut</strong></p>
+<p><strong>Local Search Algorithm for Max-Cut</strong></p>
+<ul>
+<li>initially, <span class="math inline">\((S,T)\)</span> is an
+arbitrary cut</li>
+<li>if <span class="math inline">\(\exist v\)</span> switching side
+increases cut, then switch side</li>
+</ul>
+<p>in a local optima (fixed point): <span class="math display">\[
+\forall v\in
+S:|E(v,S)|\leq|E(v,T)|\Longrightarrow2|E(S,S)|\leq|E(S,T)|\\
+\forall v\in
+T:|E(v,T)|\leq|E(v,S)|\Longrightarrow2|E(T,T)|\leq|E(S,T)|\\
+\Longrightarrow |E(S,S)|+|E(T,T)|\leq|E(S,T)|\\
+\Longrightarrow |E(S,T)|\geq\frac{1}{2}|E|\geq\frac{1}{2}OPT
+\]</span></p>
+<h3 id="scheduling">Scheduling</h3>
+<p><strong>Instance</strong>: <span class="math inline">\(n\)</span>
+jobs <span class="math inline">\(j=1,\ldots,n\)</span> with processing
+times <span class="math inline">\(p_j\in\R^+\)</span></p>
+<p><strong>Solution</strong>: An assignment of <span
+class="math inline">\(n\)</span> jobs to <span
+class="math inline">\(m\)</span> identical machines that minimizes the
+makespan <span class="math inline">\(C_\max\)</span></p>
+<p><strong>Graham's List Algorithm</strong></p>
+<p>assign job to the current least heavily loaded machine</p>
+<p><span class="math inline">\(OPT\geq\max_{1\leq j\leq n}
+p_j\)</span></p>
+<p><span class="math inline">\(OPT\geq\frac{1}{m}\sum_{j=1}^n
+p_j\)</span></p>
+<p><span class="math inline">\(C_{i^*}-p_l\leq \frac{1}{m}\sum_{j\neq
+l}p_j\)</span></p>
+<p><span class="math inline">\(p_l\leq\max_{1\leq j\leq
+n}p_j\)</span></p>
+<p><span
+class="math inline">\(C_\max=C_{i^*}\leq(1-\frac{1}{m})p_l+\frac{1}{m}\sum_{1\leq
+j\leq n}p_j\leq(2-\frac{1}{m})OPT\)</span></p>
+<p>tight</p>
+<p><strong>Longest Processing Time (LPT)</strong></p>
+<p><span class="math inline">\(p_1\geq p_2\geq\dots\geq p_n\)</span></p>
+<p>assign job to the current least heavily loaded machine</p>
+<p>WLOG: <span class="math inline">\(C_{i^*}&gt;\max_{1\leq j\leq
+n}p_j\Longrightarrow p_l\leq p_{m+1}\)</span></p>
+<p><span class="math inline">\(OPT\geq p_m+p_{m+1}\geq
+2p_{m+1}\)</span></p>
+<p><span class="math inline">\(p_l\leq\frac{1}{2}OPT\)</span></p>
+<p><span class="math inline">\(C_\max=C_{i^*}\leq
+p_l+\frac{1}{m}\sum_{1\leq j\leq n}p_j\leq \frac{3}{2}OPT\)</span></p>
+<p>can be improved to <span class="math inline">\(4/3\)</span>-approx.
+with a more careful analysis</p>
+<p>has a PTAS</p>
+<p><strong>PTAS (Polynomial-Time Approximation Scheme):</strong></p>
+<p><span class="math inline">\(\forall\epsilon&gt;0\)</span>, a <span
+class="math inline">\((1+\epsilon)\)</span>-approx. solution can be
+returned in time <span
+class="math inline">\(f(\epsilon)\cdot\mathrm{poly(n)}\)</span></p>
+<p><strong>competitive ratio</strong> of an online algorithm</p>
+<h3 id="set-cover">Set Cover</h3>
+<p><strong>Instance:</strong> A sequence of subsets <span
+class="math inline">\(S_1,\dots,S_m\subseteq U\)</span>.</p>
+<p>Find the smallest <span
+class="math inline">\(C\subseteq\{1,\dots,m\}\)</span> s.t. <span
+class="math inline">\(\bigcup_{i\in C}S_i=U\)</span>.</p>
+<p>Hitting Set is exactly Set Cover</p>
+<p><strong>Greedy Cover:</strong></p>
+<p>initially <span class="math inline">\(C=\empty\)</span></p>
+<p>while <span class="math inline">\(U\neq\empty\)</span> do:</p>
+<p>​ add <span class="math inline">\(i\)</span> with largest <span
+class="math inline">\(|S_i\cap U|\)</span> to <span
+class="math inline">\(C\)</span></p>
+<p>​ <span class="math inline">\(U=U\backslash S_i\)</span></p>
+<h1 id="rounding-dynamic-programs">Rounding Dynamic Programs</h1>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#min-cut-and-max-cut"><span class="nav-number">1.</span> <span class="nav-text">Min-Cut and Max-Cut</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kargers-min-cut-algorithm"><span class="nav-number">1.0.1.</span> <span class="nav-text">Karger&#39;s Min-Cut Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#faster-min-cut"><span class="nav-number">1.0.2.</span> <span class="nav-text">Faster Min-Cut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#greedy-cut"><span class="nav-number">1.0.3.</span> <span class="nav-text">Greedy Cut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#random-cut"><span class="nav-number">1.0.4.</span> <span class="nav-text">Random Cut</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fingerprinting"><span class="nav-number">2.</span> <span class="nav-text">Fingerprinting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#checking-matrix-multiplication"><span class="nav-number">2.0.1.</span> <span class="nav-text">Checking Matrix
+Multiplication</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#polynomial-identity-testing"><span class="nav-number">2.0.2.</span> <span class="nav-text">Polynomial Identity Testing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#checking-distinctness"><span class="nav-number">2.0.3.</span> <span class="nav-text">Checking Distinctness</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hashing-and-sketching"><span class="nav-number">3.</span> <span class="nav-text">Hashing and Sketching</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#count-distinct-elements"><span class="nav-number">3.0.1.</span> <span class="nav-text">Count Distinct Elements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#frequency-estimation"><span class="nav-number">3.0.2.</span> <span class="nav-text">Frequency Estimation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#balls-into-bins"><span class="nav-number">4.</span> <span class="nav-text">Balls into Bins</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#birthday-paradox"><span class="nav-number">4.0.1.</span> <span class="nav-text">Birthday Paradox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#coupon-collector"><span class="nav-number">4.0.2.</span> <span class="nav-text">Coupon Collector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#occupancy-problem"><span class="nav-number">4.0.3.</span> <span class="nav-text">Occupancy Problem</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#concentration-of-measure"><span class="nav-number">5.</span> <span class="nav-text">Concentration of Measure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chernoff-hoeffding-bounds"><span class="nav-number">5.0.1.</span> <span class="nav-text">Chernoff-Hoeffding Bounds</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-method-of-bounded-differences"><span class="nav-number">5.0.2.</span> <span class="nav-text">The Method of Bounded
+Differences</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dimension-reduction"><span class="nav-number">6.</span> <span class="nav-text">Dimension Reduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#johnson-lindenstrauss-theorem"><span class="nav-number">6.0.1.</span> <span class="nav-text">Johnson-Lindenstrauss
+Theorem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nearest-neighbor-search"><span class="nav-number">6.0.2.</span> <span class="nav-text">Nearest Neighbor Search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#locality-sensitive-hashing"><span class="nav-number">6.0.3.</span> <span class="nav-text">Locality Sensitive Hashing</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#greedy-and-local-search"><span class="nav-number">7.</span> <span class="nav-text">Greedy and Local Search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#max-cut"><span class="nav-number">7.0.1.</span> <span class="nav-text">Max-Cut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scheduling"><span class="nav-number">7.0.2.</span> <span class="nav-text">Scheduling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set-cover"><span class="nav-number">7.0.3.</span> <span class="nav-text">Set Cover</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rounding-dynamic-programs"><span class="nav-number">8.</span> <span class="nav-text">Rounding Dynamic Programs</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">sdcgvhgj</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sdcgvhgj</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
