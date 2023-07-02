@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>test</title>
+    <url>/2023/06/28/test/</url>
+    <content><![CDATA[
+]]></content>
+  </entry>
+  <entry>
+    <title>TEST</title>
+    <url>/2023/06/29/TEST-0/</url>
+    <content><![CDATA[
+]]></content>
+  </entry>
+  <entry>
     <title>AAA</title>
     <url>/2023/06/27/AAA/</url>
     <content><![CDATA[<p><span class="math display">\[
@@ -783,17 +795,5 @@ class="math inline">\(C\)</span></p>
         <category>Course Notes</category>
         <category>NJU</category>
       </categories>
-  </entry>
-  <entry>
-    <title>TEST</title>
-    <url>/2023/06/29/TEST-0/</url>
-    <content><![CDATA[
-]]></content>
-  </entry>
-  <entry>
-    <title>test</title>
-    <url>/2023/06/28/test/</url>
-    <content><![CDATA[
-]]></content>
   </entry>
 </search>
