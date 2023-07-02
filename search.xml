@@ -1,38 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>test</title>
-    <url>/2023/06/28/test/</url>
-    <content><![CDATA[
-]]></content>
-  </entry>
-  <entry>
-    <title>TEST</title>
-    <url>/2023/06/29/TEST-0/</url>
-    <content><![CDATA[
-]]></content>
-  </entry>
-  <entry>
-    <title>AAA</title>
-    <url>/2023/06/27/AAA/</url>
-    <content><![CDATA[<p><span class="math display">\[
-\mathbb{ABCD}\mathcal{DDFS}
-\]</span></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print &#x27;hello&#x27;</span><br></pre></td></tr></table></figure>
-<p><span class="math inline">\(\mathcal{AAAAA}\)</span></p>
-<p><span class="math display">\[\begin{equation}\label{eq2}
-\begin{aligned}
-a &amp;= b + c \\
-  &amp;= d + e + f + g \\
-  &amp;= h + i
-\end{aligned}
-\end{equation}\]</span></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Advanced Algorithm</title>
     <url>/2023/06/27/Advanced%20Algorithm/</url>
-    <content><![CDATA[<h1 id="min-cut-and-max-cut">Min-Cut and Max-Cut</h1>
+    <content><![CDATA[<h2 id="min-cut-and-max-cut">Min-Cut and Max-Cut</h2>
 <h3 id="kargers-min-cut-algorithm">Karger's Min-Cut Algorithm</h3>
 <p>pick an edge uniformly at random and contract it</p>
 <p><strong>Theorem:</strong></p>
@@ -63,7 +34,7 @@ class="math inline">\(E(S,T)\)</span></p>
 <p>de-randomization by conditional expectation</p>
 <p>mutual independence, k-wise independence</p>
 <p>de-randomization by pairwise independence</p>
-<h1 id="fingerprinting">Fingerprinting</h1>
+<h2 id="fingerprinting">Fingerprinting</h2>
 <h3 id="checking-matrix-multiplication">Checking Matrix
 Multiplication</h3>
 <p><strong>Freivald’s Algorithm:</strong></p>
@@ -118,7 +89,7 @@ class="math inline">\(\mathbb{Z}_p\)</span></li>
 class="math inline">\(\mathbb{Z}_p\)</span> but <span
 class="math inline">\(f_A(r)=f_B(r)\)</span></li>
 </ul>
-<h1 id="hashing-and-sketching">Hashing and Sketching</h1>
+<h2 id="hashing-and-sketching">Hashing and Sketching</h2>
 <h3 id="count-distinct-elements">Count Distinct Elements</h3>
 <p><strong>Input:</strong> a sequence <span
 class="math inline">\(x_1,x_2,...,x_s\in U=[N]\)</span></p>
@@ -263,7 +234,7 @@ and <span class="math inline">\(k=\lceil\ln(1/\delta)\rceil\)</span></p>
 <p>time cost: <span class="math inline">\(O(\log(1/\delta))\)</span></p>
 <p><span class="math inline">\(O(\log(1/\delta)\log N)\)</span> bits for
 hash functions</p>
-<h1 id="balls-into-bins">Balls into Bins</h1>
+<h2 id="balls-into-bins">Balls into Bins</h2>
 <table>
 <thead>
 <tr class="header">
@@ -323,7 +294,7 @@ class="math inline">\(T_i[h_i(x)]=x\)</span></li>
 class="math inline">\(|B_i|\)</span></p>
 <p><span class="math inline">\(\mathrm{\#\ of\
 collision}=\frac{1}{2}\sum|B_i|(|B_i|-1)\Longrightarrow\mathbb{E}\bigg[\sum|B_i|^2\bigg]=\frac{n(n-1)}{m}+n\)</span></p>
-<p><span class="math inline">\(\exist h\)</span> from a 2-universal
+<p><span class="math inline">\(\exists h\)</span> from a 2-universal
 family s.t. the total space cost is <span
 class="math inline">\(O(n)\)</span></p>
 <p><span class="math inline">\(O(n\log N)\)</span> space, <span
@@ -382,7 +353,7 @@ as i.i.d. <span
 class="math inline">\(Y_1,...,Y_n\sim\mathrm{Pois}(m/n)\)</span></p>
 <ul>
 <li><strong>Theorem:</strong> <span class="math inline">\(\forall
-m_1,...,m_n\in\N\)</span> s.t. <span
+m_1,...,m_n\in\mathbb{N}\)</span> s.t. <span
 class="math inline">\(\sum_{i=1}^{n}m_i=m\)</span></li>
 </ul>
 <p><span class="math display">\[
@@ -402,7 +373,7 @@ class="math inline">\(f\)</span></li>
 paradigm, the maximum load is <span class="math inline">\(\ln\ln n/\ln
 2+\Theta(1)\)</span> w.h.p.</p>
 <p><strong>Cuckoo Hashing</strong></p>
-<h1 id="concentration-of-measure">Concentration of Measure</h1>
+<h2 id="concentration-of-measure">Concentration of Measure</h2>
 <h3 id="chernoff-hoeffding-bounds">Chernoff-Hoeffding Bounds</h3>
 <p><strong>Chernoff Bound</strong></p>
 <p>For independent (or negatively associated) <span
@@ -550,27 +521,27 @@ class="math inline">\(Y_0,Y_1,...,Y_n\)</span> is a martingale with
 respect to <span class="math inline">\(X_1,...,X_n\)</span>.</p>
 <p>Then McDiarmid’s Inequality can be proved using Azuma's Inequality of
 a Doob Martingale with respect to independent random variables.</p>
-<h1 id="dimension-reduction">Dimension Reduction</h1>
+<h2 id="dimension-reduction">Dimension Reduction</h2>
 <h3 id="johnson-lindenstrauss-theorem">Johnson-Lindenstrauss
 Theorem</h3>
 <p><strong>Theorem:</strong></p>
 <p><span class="math inline">\(\forall 0&lt;\epsilon&lt;1\)</span>, for
 any set <span class="math inline">\(S\)</span> of <span
 class="math inline">\(n\)</span> points from <span
-class="math inline">\(\R^d\)</span>, there is a <span
-class="math inline">\(\phi:\R^d\rightarrow\R^k\)</span> with <span
-class="math inline">\(k=O(\epsilon^{-2}\log n)\)</span>, such that <span
-class="math inline">\(\forall x,y\in S:\)</span> <span
+class="math inline">\(\mathbb{R}^d\)</span>, there is a <span
+class="math inline">\(\phi:\mathbb{R}^d\rightarrow\mathbb{R}^k\)</span>
+with <span class="math inline">\(k=O(\epsilon^{-2}\log n)\)</span>, such
+that <span class="math inline">\(\forall x,y\in S:\)</span> <span
 class="math display">\[
 (1-\epsilon)||x-y||_2^2\leq||\phi(x)-\phi(y)||_2^2\leq(1+\epsilon)||x-y||_2^2
 \]</span> Actually, <span class="math inline">\(\phi(x)=Ax\)</span></p>
 <p>The probabilistic method: for random <span
-class="math inline">\(A\in\R^{k\times d}\)</span> <span
+class="math inline">\(A\in\mathbb{R}^{k\times d}\)</span> <span
 class="math display">\[
 \Pr\big[\forall x,y\in
 S:(1-\epsilon)||x-y||_2^2\leq||\phi(x)-\phi(y)||_2^2\leq(1+\epsilon)||x-y||_2^2\big]=1-O\bigg(\frac{1}{n}\bigg)
 \]</span> Efficient construction of random <span
-class="math inline">\(A\in\R^{k\times d}\)</span>:</p>
+class="math inline">\(A\in\mathbb{R}^{k\times d}\)</span>:</p>
 <ul>
 <li>projection onto uniform random <span
 class="math inline">\(k\)</span>-dimensional subspace</li>
@@ -583,9 +554,9 @@ from <span class="math inline">\(\mathcal{N}(0,1/k)\)</span></p>
 <p><strong>JLT (uniform k-dim subspace)</strong></p>
 <p>the <span class="math inline">\(k\)</span> rows <span
 class="math inline">\(A_1,...,A_k\)</span> of <span
-class="math inline">\(A\in\R^{k\times d}\)</span> are orthogonal unit
-vectors <span class="math inline">\(\in\R^d\)</span> chosen uniformly at
-random and let <span
+class="math inline">\(A\in\mathbb{R}^{k\times d}\)</span> are orthogonal
+unit vectors <span class="math inline">\(\in\mathbb{R}^d\)</span> chosen
+uniformly at random and let <span
 class="math inline">\(y_i=\sqrt{\frac{d}{k}}Ax_i\)</span></p>
 <p>(?)</p>
 <h3 id="nearest-neighbor-search">Nearest Neighbor Search</h3>
@@ -604,7 +575,7 @@ n}\mathrm{dist}(x,y_j)\)</span></p>
 Near Neighbor):</strong></p>
 <p>return a <span class="math inline">\(y_i\)</span> that <span
 class="math inline">\(\mathrm{dist}(x,y_i)\leq c\cdot r\)</span> if
-<span class="math inline">\(\exist y_j\)</span> s.t. <span
+<span class="math inline">\(\exists y_j\)</span> s.t. <span
 class="math inline">\(\mathrm{dist}(x,y_j)\leq r\)</span></p>
 <p>​ "no" if <span class="math inline">\(\forall y_i,
 \mathrm{dist}(x,y_i)&gt;c\cdot r\)</span></p>
@@ -630,7 +601,7 @@ class="math inline">\(u\in\{0,1\}^k\)</span></p></li>
 class="math inline">\(x\in\{0,1\}^d:\)</span></p>
 <ul>
 <li>retrieve <span class="math inline">\(B_s(Ax)\)</span></li>
-<li>if <span class="math inline">\(B_s(Ax)=\empty\)</span> return
+<li>if <span class="math inline">\(B_s(Ax)=\emptyset\)</span> return
 "no"</li>
 <li>else return any <span class="math inline">\(y_i\in
 B_s(Ax)\)</span></li>
@@ -683,7 +654,7 @@ X\)</span>:</strong></p>
 <ul>
 <li>find <span class="math inline">\(10l\)</span> such <span
 class="math inline">\(y_i\)</span> that <span
-class="math inline">\(\exist j,g_j(x)=g_j(y_i)\)</span> by binary
+class="math inline">\(\exists j,g_j(x)=g_j(y_i)\)</span> by binary
 search</li>
 <li>if encounter a <span class="math inline">\(y_i\)</span> that <span
 class="math inline">\(\mathrm{dist}(x,y_i)\leq c\cdot r\)</span> return
@@ -716,14 +687,14 @@ class="math inline">\(\rho=\frac{\log(1-r/d)}{\log(1-cr/d)}\leq\frac{1}{c}\)</sp
 <p>space: <span class="math inline">\(O(n^{1+1/c})\)</span> time: <span
 class="math inline">\(O(n^{1/c}\cdot\log n)\)</span> one-sided error
 &lt;0.5</p>
-<h1 id="greedy-and-local-search">Greedy and Local Search</h1>
+<h2 id="greedy-and-local-search">Greedy and Local Search</h2>
 <h3 id="max-cut">Max-Cut</h3>
 <p><strong>Greedy Algorithm for Max-Cut</strong></p>
 <p><strong>Local Search Algorithm for Max-Cut</strong></p>
 <ul>
 <li>initially, <span class="math inline">\((S,T)\)</span> is an
 arbitrary cut</li>
-<li>if <span class="math inline">\(\exist v\)</span> switching side
+<li>if <span class="math inline">\(\exists v\)</span> switching side
 increases cut, then switch side</li>
 </ul>
 <p>in a local optima (fixed point): <span class="math display">\[
@@ -737,7 +708,7 @@ T:|E(v,T)|\leq|E(v,S)|\Longrightarrow2|E(T,T)|\leq|E(S,T)|\\
 <h3 id="scheduling">Scheduling</h3>
 <p><strong>Instance</strong>: <span class="math inline">\(n\)</span>
 jobs <span class="math inline">\(j=1,\ldots,n\)</span> with processing
-times <span class="math inline">\(p_j\in\R^+\)</span></p>
+times <span class="math inline">\(p_j\in\mathbb{R}^+\)</span></p>
 <p><strong>Solution</strong>: An assignment of <span
 class="math inline">\(n\)</span> jobs to <span
 class="math inline">\(m\)</span> identical machines that minimizes the
@@ -783,13 +754,14 @@ class="math inline">\(C\subseteq\{1,\dots,m\}\)</span> s.t. <span
 class="math inline">\(\bigcup_{i\in C}S_i=U\)</span>.</p>
 <p>Hitting Set is exactly Set Cover</p>
 <p><strong>Greedy Cover:</strong></p>
-<p>initially <span class="math inline">\(C=\empty\)</span></p>
-<p>while <span class="math inline">\(U\neq\empty\)</span> do:</p>
+<p>initially <span class="math inline">\(C=\emptyset\)</span></p>
+<p>while <span class="math inline">\(U\neq\emptyset\)</span> do:</p>
 <p>​ add <span class="math inline">\(i\)</span> with largest <span
 class="math inline">\(|S_i\cap U|\)</span> to <span
 class="math inline">\(C\)</span></p>
 <p>​ <span class="math inline">\(U=U\backslash S_i\)</span></p>
-<h1 id="rounding-dynamic-programs">Rounding Dynamic Programs</h1>
+<h2 id="rounding-dynamic-programs">Rounding Dynamic Programs</h2>
+<p>(to be done)</p>
 ]]></content>
       <categories>
         <category>Course Notes</category>
