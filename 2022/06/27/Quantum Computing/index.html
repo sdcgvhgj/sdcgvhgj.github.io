@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.sdcgvhgj.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Reading Notes of: Quantum Computation and Quantum Information  2.1 Linear Algebra vector space (e.g. \(\mathbb{C}^n\)) a vector subspace of a vector space \(V\) is a subset \(W\) of \(V\) such">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Quantum Computing (Spring 2022 NJU)">
+<meta property="og:url" content="https://blog.sdcgvhgj.top/2022/06/27/Quantum%20Computing/index.html">
+<meta property="og:site_name" content="sdcgvhgj&#39;s blog">
+<meta property="og:description" content="Reading Notes of: Quantum Computation and Quantum Information  2.1 Linear Algebra vector space (e.g. \(\mathbb{C}^n\)) a vector subspace of a vector space \(V\) is a subset \(W\) of \(V\) such">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-07-02T07:33:47.977Z">
+<meta property="article:author" content="sdcgvhgj">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.sdcgvhgj.top/2022/06/27/Quantum%20Computing/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Quantum Computing (Spring 2022 NJU) | sdcgvhgj's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">sdcgvhgj's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.sdcgvhgj.top/2022/06/27/Quantum%20Computing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="sdcgvhgj">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sdcgvhgj's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Quantum Computing (Spring 2022 NJU)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-27 00:00:00" itemprop="dateCreated datePublished" datetime="2022-06-27T00:00:00+08:00">2022-06-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-02 15:33:47" itemprop="dateModified" datetime="2023-07-02T15:33:47+08:00">2023-07-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Course-Notes/" itemprop="url" rel="index"><span itemprop="name">Course Notes</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Course-Notes/NJU/" itemprop="url" rel="index"><span itemprop="name">NJU</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>Reading Notes of: <a
+target="_blank" rel="noopener" href="http://mmrc.amss.cas.cn/tlb/201702/W020170224608149940643.pdf">Quantum
+Computation and Quantum Information</a></p>
+</blockquote>
+<h2 id="linear-algebra">2.1 Linear Algebra</h2>
+<p>vector space (e.g. <span
+class="math inline">\(\mathbb{C}^n\)</span>)</p>
+<p>a <strong>vector subspace</strong> of a vector space <span
+class="math inline">\(V\)</span> is a subset <span
+class="math inline">\(W\)</span> of <span
+class="math inline">\(V\)</span> such that <span
+class="math inline">\(W\)</span> is also a vector space</p>
+<p>a <strong>basis</strong> of a vector space</p>
+<p>the <strong>dimension</strong> of a vector space is the number of
+elements in the basis</p>
+<p>a <strong>linear operator</strong> between vector spaces <span
+class="math inline">\(V\)</span> and <span
+class="math inline">\(W\)</span></p>
+<p>a <strong>matrix representation</strong> of the operator <span
+class="math inline">\(A:V\rightarrow W\)</span> <span
+class="math display">\[
+A|v_j\rangle=\sum_iA_{ij}|w_i\rangle
+\]</span> To make the connection between matrices and linear operators
+we must specify a set of input and output basis states for the input and
+output vector spaces of the linear operator.</p>
+<p>inner product : 1. linear 2. commutation 3. (v,v)&gt;=0</p>
+<p>inner product space : a vector space equipped with an inner
+product</p>
+<p>a Hilbert space is exactly the same thing as an inner product
+space</p>
+<p>orthogonal</p>
+<p>norm</p>
+<p>unit vector</p>
+<p>orthonormal</p>
+<p>orthonormal basis (produced by Gram-Schmidt procedure from a
+basis)</p>
+<p>a matrix representation is with respect to orthonormal input and
+output bases</p>
+<p>a vector has a matrix representation with respect to an orthonormal
+basis</p>
+<p>the inner product of two vectors is equal to the vector inner product
+between two matrix representations of those vectors</p>
+<p>define outer product <span class="math inline">\(|w\rangle\langle
+v|\)</span> as a linear operator from <span
+class="math inline">\(V\)</span> to <span
+class="math inline">\(W\)</span>, making use of the inner product</p>
+<p>completeness relation: <span
+class="math inline">\(\sum_i|i\rangle\langle i|=I\)</span></p>
+<p>representation of any linear operator in the outer product notation:
+<span class="math display">\[
+A=\sum_{ij}|w_i\rangle\langle w_i|A|v_j\rangle\langle v_j|
+=\sum_{ij}\langle w_i|A|v_j\rangle |w_i\rangle\langle
+v_j|=\sum_{ij}A_{ij}|w_i\rangle\langle v_j|
+\]</span> Cauchy-Schwarz inequality : <span
+class="math inline">\(|\langle v|w\rangle|^2\leq\langle
+v|v\rangle\langle w|w\rangle\)</span></p>
+<p>eigenvector, eigenvalue of a linear operator</p>
+<p>The characteristic function depends only upon the operator <span
+class="math inline">\(A\)</span>, and not on the specific matrix
+representation used for <span class="math inline">\(A\)</span>.</p>
+<p>eigenspace corresponding an eigenvalue <span
+class="math inline">\(v\)</span> is a vector subspace of <span
+class="math inline">\(V\)</span></p>
+<p><strong>diagonal representation</strong> <span
+class="math inline">\(A=\sum_i\lambda_i|i\rangle\langle i|\)</span> ,
+where <span class="math inline">\(|i\rangle\)</span> form an orthonormal
+set of eigenvectors for <span class="math inline">\(A\)</span>.</p>
+<p>an eigenspace is called degenerate when it's more than one
+dimensional</p>
+<p>the <strong>adjoint / Hermitian conjugate</strong> of a linear
+operator on a Hilbert space</p>
+<p>a <strong>Hermitian / self-adjoint</strong> operator</p>
+<p>the <strong>projector</strong> onto the subspace <span
+class="math inline">\(W\)</span> is <span
+class="math inline">\(P\equiv\sum_{i=1}^k|i\rangle\langle i|\)</span>.
+<span class="math inline">\(W\)</span> is a <span
+class="math inline">\(k\)</span>-dimensional vector subspace of the
+<span class="math inline">\(d\)</span>-dimensional vector space <span
+class="math inline">\(V\)</span>. <span
+class="math inline">\(|1\rangle,\dots,|k\rangle\)</span> is an
+orthonormal basis for <span class="math inline">\(W\)</span>. The
+definition is independent of the orthonormal basis used for <span
+class="math inline">\(W\)</span>.</p>
+<p>The orthogonal complement of <span class="math inline">\(P\)</span>
+is the operator <span class="math inline">\(Q\equiv I-P\)</span>.</p>
+<p><strong>normal</strong> : <span
+class="math inline">\(AA^\dagger=A^\dagger A\)</span></p>
+<p>normal <span class="math inline">\(\Longleftrightarrow\)</span>
+diagonalizable</p>
+<p>Hermitian <span class="math inline">\(\Longleftrightarrow\)</span>
+diagonalizable and having real eigenvalues</p>
+<p>projector <span class="math inline">\(\Longleftrightarrow\)</span>
+diagonalizable and having 0/1 eigenvalues</p>
+<p>unitary <span class="math inline">\(\Longleftrightarrow\)</span>
+diagonalizable and having modulus-1 eigenvalues</p>
+<p><strong>unitary</strong> : <span class="math inline">\(U^\dagger
+U=I\)</span></p>
+<p>unitary operators also satisfies <span
+class="math inline">\(UU^\dagger=I\)</span>, therefore normal and
+diagonalizable. unitary operators preserve inner products between
+vectors.</p>
+<p>outer product representation of unitary operators : <span
+class="math inline">\(U=\sum_i|w_i\rangle\langle v_i|\)</span>, where
+<span class="math inline">\(|v_i\rangle\)</span> is any orthonormal set
+and <span class="math inline">\(|w_i\rangle\equiv U|v_i\rangle\)</span>
+is therefore also an orthonormal set.</p>
+<p>All eigenvalues of a unitary matrix have modulus 1.</p>
+<p><strong>positive operator</strong> : for any <span
+class="math inline">\(|v\rangle\)</span>, <span
+class="math inline">\((|v\rangle,A|v\rangle)\)</span> is real,
+non-negative</p>
+<p>A positive operator is necessarily Hermitian. (Any <span
+class="math inline">\(A\)</span> can be written as <span
+class="math inline">\(A=B+iC\)</span>, where <span
+class="math inline">\(B\)</span> and <span
+class="math inline">\(C\)</span> are Hermitian)</p>
+<p><strong>tensor product</strong> of two Hilbert spaces</p>
+<p><strong>Kronecker product</strong> of two matrices</p>
+<p>operator functions <span class="math inline">\(f(A)\equiv\sum
+f(\lambda)|\lambda\rangle\langle\lambda|\)</span></p>
+<p>trace <span class="math inline">\(tr(A)=\sum A_{ii}=\sum \langle
+i|A|i\rangle\)</span></p>
+<p>trace is invariant under the unitary similarity transformation</p>
+<p>thus the trace of an operator is any trace of its matrix
+representation</p>
+<p>commutator <span class="math inline">\([A,B]=AB-BA\)</span></p>
+<p>anticommutator <span class="math inline">\(\{A,B\}=AB+BA\)</span></p>
+<p><span class="math inline">\([A,B]=0\)</span> if and only if <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> are simultaneously diagonalizable</p>
+<p><strong>Polar decomposition</strong> <span
+class="math inline">\(A=UJ=KU\)</span>, where <span
+class="math inline">\(U\)</span> is unitary, <span
+class="math inline">\(J\)</span> and <span
+class="math inline">\(K\)</span> are positive operators.</p>
+<p><strong>Singular value decomposition</strong> <span
+class="math inline">\(A=UDV\)</span>, where <span
+class="math inline">\(U\)</span> and <span
+class="math inline">\(V\)</span> are unitary, <span
+class="math inline">\(D\)</span> is a diagonal matrix with non-negative
+entries.</p>
+<h2 id="the-postulates-of-quantum-mechanics">2.2 The postulates of
+quantum mechanics</h2>
+<p><strong>Postulate 1:</strong> state space</p>
+<p><strong>Postulate 2:</strong> evolution (of a closed system)</p>
+<p>Hadamard gate <span class="math inline">\(H=\frac{1}{\sqrt
+2}(|0\rangle+|1\rangle)\langle 0|+\frac{1}{\sqrt
+2}(|0\rangle-|1\rangle)\langle 1|\)</span></p>
+<p><span class="math inline">\(H\)</span> is Hermitian and unitary.</p>
+<p><strong>Postulate 3:</strong> quantum measurement</p>
+<p>the measurement of a qubit in the computational basis</p>
+<p>distinguishability of quantum states</p>
+<p>projective measurements</p>
+<ul>
+<li>observable <span class="math inline">\(M\)</span>, a Hermitian</li>
+<li><span class="math inline">\(\langle M\rangle\)</span></li>
+<li><span class="math inline">\(\Delta(M)=\sqrt{\langle
+M^2\rangle-\langle M\rangle}\)</span></li>
+</ul>
+<p>the Heisenberg uncertainty principle : <span class="math display">\[
+\Delta(C)\Delta(D)\geq \frac{|\langle\psi|[C,D]|\psi\rangle|}{2}
+\]</span> measurement of spin along the <span
+class="math inline">\(\vec{v}\)</span> axis: an observable <span
+class="math inline">\(\vec{v}\cdot\vec{\sigma}=v_1\sigma_1+v_2\sigma_2+v_3\sigma_3\)</span></p>
+<p>POVM <span class="math inline">\(\{E_m\}\)</span>, <span
+class="math inline">\(\sum_m E_m=I\)</span>, positive operator</p>
+<p>one sided error of distinguishing two (not necessarily orthogonal)
+states</p>
+<p>${M_m^}M_m=E_m$ unitary <span class="math inline">\(U_m\)</span> s.t.
+<span class="math inline">\(M_m=U_m\sqrt{E_m}\)</span></p>
+<p>equivalence up to the <em>global phase factor</em></p>
+<p><strong>Postulate 4:</strong> the state space of a composite
+system</p>
+<p>a linear operator on a subspace which preserves inner product can be
+extended to the entire space as a unitary operator</p>
+<p>unitary dynamics + projective measurements + ability to introduce
+ancillary systems = Postulate 3</p>
+<p>superdense coding</p>
+<p>Bell states: 00+11, 00-11, 01+10, 01-10</p>
+<p>for all bell states, <span class="math inline">\(\langle\psi|E\otimes
+I|\psi\rangle=\frac{1}{2}(\langle 0|E|0\rangle+\langle
+1|E|1\rangle)\)</span>, thus undistinguishable by only the first
+qubit.</p>
+<p>density operator <span class="math inline">\(\rho\)</span>:</p>
+<ul>
+<li>positive operator</li>
+<li><span class="math inline">\(tr(\rho)=1\)</span></li>
+</ul>
+<p><span class="math inline">\(tr(\rho^2)\leq 1\)</span> with equality
+iff <span class="math inline">\(\rho\)</span> is a pure state <span
+class="math display">\[
+\rho=\sum_i p_i|\psi_i\rangle\langle\psi_i|=\sum_j
+q_j|φ_j\rangle\langleφ_j|\Longleftrightarrow \exists U\ \sqrt
+{p_i}|\psi_i\rangle=\sum_j u_{ij}\sqrt{q_j}|φ_j\rangle
+\]</span> an arbitrary density matrix for a qubit may be written as
+<span class="math display">\[
+\rho=\frac{I+\vec{r}\cdot\vec{\sigma}}{2}
+\]</span> partial trace <span class="math inline">\(\rho^A\equiv
+tr_B(\rho^{AB})\)</span> defined by <span
+class="math inline">\(tr_B(\rho\otimes\sigma)=\rho\
+\mathrm{tr}(\sigma)\)</span></p>
+<p>the reduced density operator for Bell states is <span
+class="math inline">\(\frac{I}{2}\)</span></p>
+<p>why partial trace? the unique function that satisfies <span
+class="math inline">\(tr(M\rho^A)=tr((M\otimes I)\rho^{AB})\)</span>,
+the correct measurement statistics</p>
+<p>Schmidt decomposition: <span class="math display">\[
+|\psi\rangle=\sum_i\lambda_i|i_A\rangle|i_B\rangle
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(|\psi\rangle\)</span> is any pure
+state of <span class="math inline">\(AB\)</span></p></li>
+<li><p><span class="math inline">\(|i_A\rangle\)</span> are orthonormal
+states for <span class="math inline">\(A\)</span>, <span
+class="math inline">\(|i_B\rangle\)</span> are orthonormal states for
+<span class="math inline">\(B\)</span></p></li>
+<li><p><span class="math inline">\(\lambda_i\)</span> are non-negative
+real numbers satisfying <span
+class="math inline">\(\sum_i\lambda_i^2=1\)</span></p></li>
+<li><p><span
+class="math inline">\(\rho^A=\sum_i\lambda_i^2|i_A\rangle\langle
+i_A|\)</span>, <span
+class="math inline">\(\rho^B=\sum_i\lambda_i^2|i_B\rangle\langle
+i_B|\)</span>, the eigenvalues of <span
+class="math inline">\(\rho^A\)</span> and <span
+class="math inline">\(\rho^B\)</span> are identical</p></li>
+<li><p>a symmetry between component systems of a pure state</p></li>
+<li><p>Schmidt bases, Schmidt number</p></li>
+<li><p>Schmidt number quantifies the "amount" of entanglement, preserved
+under unitary transformation on component system. <span
+class="math inline">\(|\psi\rangle\)</span> is a product state if and
+only if it has Schmidt number 1.</p></li>
+</ul>
+<p>purification:</p>
+<ul>
+<li><p>suppose <span class="math inline">\(\rho^A=\sum_i
+p_i|i^A\rangle\langle i^A|\)</span></p></li>
+<li><p>define <span class="math inline">\(|AR\rangle\equiv
+\sum_i\sqrt{p_i}|i^A\rangle|i^R\rangle\)</span></p></li>
+<li><p>then <span class="math inline">\(tr_R(|AR\rangle\langle
+AR|)=\rho^A\)</span></p></li>
+</ul>
+<p>for a pure state phi of AB, calculate the decomposition of rho^A and
+rho^B, then the Schmidt decomposition of phi is derived? <span
+class="math display">\[
+(\rho^A,\rho^B)\text{ uniquely determine } \rho^{AB}?
+\]</span></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#linear-algebra"><span class="nav-number">1.</span> <span class="nav-text">2.1 Linear Algebra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-postulates-of-quantum-mechanics"><span class="nav-number">2.</span> <span class="nav-text">2.2 The postulates of
+quantum mechanics</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">sdcgvhgj</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:sdcgvhgj@gmail.com" title="E-Mail → mailto:sdcgvhgj@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/sdcgvhgj" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sdcgvhgj" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-paw"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sdcgvhgj</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

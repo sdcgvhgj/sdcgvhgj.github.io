@@ -1,9 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Advanced Algorithm</title>
-    <url>/2023/06/27/Advanced%20Algorithm/</url>
-    <content><![CDATA[<h2 id="min-cut-and-max-cut">Min-Cut and Max-Cut</h2>
+    <title>Quantum Computing (Spring 2022 NJU)</title>
+    <url>/2022/06/27/Quantum%20Computing/</url>
+    <content><![CDATA[<blockquote>
+<p>Reading Notes of: <a
+href="http://mmrc.amss.cas.cn/tlb/201702/W020170224608149940643.pdf">Quantum
+Computation and Quantum Information</a></p>
+</blockquote>
+<h2 id="linear-algebra">2.1 Linear Algebra</h2>
+<p>vector space (e.g. <span
+class="math inline">\(\mathbb{C}^n\)</span>)</p>
+<p>a <strong>vector subspace</strong> of a vector space <span
+class="math inline">\(V\)</span> is a subset <span
+class="math inline">\(W\)</span> of <span
+class="math inline">\(V\)</span> such that <span
+class="math inline">\(W\)</span> is also a vector space</p>
+<p>a <strong>basis</strong> of a vector space</p>
+<p>the <strong>dimension</strong> of a vector space is the number of
+elements in the basis</p>
+<p>a <strong>linear operator</strong> between vector spaces <span
+class="math inline">\(V\)</span> and <span
+class="math inline">\(W\)</span></p>
+<p>a <strong>matrix representation</strong> of the operator <span
+class="math inline">\(A:V\rightarrow W\)</span> <span
+class="math display">\[
+A|v_j\rangle=\sum_iA_{ij}|w_i\rangle
+\]</span> To make the connection between matrices and linear operators
+we must specify a set of input and output basis states for the input and
+output vector spaces of the linear operator.</p>
+<p>inner product : 1. linear 2. commutation 3. (v,v)&gt;=0</p>
+<p>inner product space : a vector space equipped with an inner
+product</p>
+<p>a Hilbert space is exactly the same thing as an inner product
+space</p>
+<p>orthogonal</p>
+<p>norm</p>
+<p>unit vector</p>
+<p>orthonormal</p>
+<p>orthonormal basis (produced by Gram-Schmidt procedure from a
+basis)</p>
+<p>a matrix representation is with respect to orthonormal input and
+output bases</p>
+<p>a vector has a matrix representation with respect to an orthonormal
+basis</p>
+<p>the inner product of two vectors is equal to the vector inner product
+between two matrix representations of those vectors</p>
+<p>define outer product <span class="math inline">\(|w\rangle\langle
+v|\)</span> as a linear operator from <span
+class="math inline">\(V\)</span> to <span
+class="math inline">\(W\)</span>, making use of the inner product</p>
+<p>completeness relation: <span
+class="math inline">\(\sum_i|i\rangle\langle i|=I\)</span></p>
+<p>representation of any linear operator in the outer product notation:
+<span class="math display">\[
+A=\sum_{ij}|w_i\rangle\langle w_i|A|v_j\rangle\langle v_j|
+=\sum_{ij}\langle w_i|A|v_j\rangle |w_i\rangle\langle
+v_j|=\sum_{ij}A_{ij}|w_i\rangle\langle v_j|
+\]</span> Cauchy-Schwarz inequality : <span
+class="math inline">\(|\langle v|w\rangle|^2\leq\langle
+v|v\rangle\langle w|w\rangle\)</span></p>
+<p>eigenvector, eigenvalue of a linear operator</p>
+<p>The characteristic function depends only upon the operator <span
+class="math inline">\(A\)</span>, and not on the specific matrix
+representation used for <span class="math inline">\(A\)</span>.</p>
+<p>eigenspace corresponding an eigenvalue <span
+class="math inline">\(v\)</span> is a vector subspace of <span
+class="math inline">\(V\)</span></p>
+<p><strong>diagonal representation</strong> <span
+class="math inline">\(A=\sum_i\lambda_i|i\rangle\langle i|\)</span> ,
+where <span class="math inline">\(|i\rangle\)</span> form an orthonormal
+set of eigenvectors for <span class="math inline">\(A\)</span>.</p>
+<p>an eigenspace is called degenerate when it's more than one
+dimensional</p>
+<p>the <strong>adjoint / Hermitian conjugate</strong> of a linear
+operator on a Hilbert space</p>
+<p>a <strong>Hermitian / self-adjoint</strong> operator</p>
+<p>the <strong>projector</strong> onto the subspace <span
+class="math inline">\(W\)</span> is <span
+class="math inline">\(P\equiv\sum_{i=1}^k|i\rangle\langle i|\)</span>.
+<span class="math inline">\(W\)</span> is a <span
+class="math inline">\(k\)</span>-dimensional vector subspace of the
+<span class="math inline">\(d\)</span>-dimensional vector space <span
+class="math inline">\(V\)</span>. <span
+class="math inline">\(|1\rangle,\dots,|k\rangle\)</span> is an
+orthonormal basis for <span class="math inline">\(W\)</span>. The
+definition is independent of the orthonormal basis used for <span
+class="math inline">\(W\)</span>.</p>
+<p>The orthogonal complement of <span class="math inline">\(P\)</span>
+is the operator <span class="math inline">\(Q\equiv I-P\)</span>.</p>
+<p><strong>normal</strong> : <span
+class="math inline">\(AA^\dagger=A^\dagger A\)</span></p>
+<p>normal <span class="math inline">\(\Longleftrightarrow\)</span>
+diagonalizable</p>
+<p>Hermitian <span class="math inline">\(\Longleftrightarrow\)</span>
+diagonalizable and having real eigenvalues</p>
+<p>projector <span class="math inline">\(\Longleftrightarrow\)</span>
+diagonalizable and having 0/1 eigenvalues</p>
+<p>unitary <span class="math inline">\(\Longleftrightarrow\)</span>
+diagonalizable and having modulus-1 eigenvalues</p>
+<p><strong>unitary</strong> : <span class="math inline">\(U^\dagger
+U=I\)</span></p>
+<p>unitary operators also satisfies <span
+class="math inline">\(UU^\dagger=I\)</span>, therefore normal and
+diagonalizable. unitary operators preserve inner products between
+vectors.</p>
+<p>outer product representation of unitary operators : <span
+class="math inline">\(U=\sum_i|w_i\rangle\langle v_i|\)</span>, where
+<span class="math inline">\(|v_i\rangle\)</span> is any orthonormal set
+and <span class="math inline">\(|w_i\rangle\equiv U|v_i\rangle\)</span>
+is therefore also an orthonormal set.</p>
+<p>All eigenvalues of a unitary matrix have modulus 1.</p>
+<p><strong>positive operator</strong> : for any <span
+class="math inline">\(|v\rangle\)</span>, <span
+class="math inline">\((|v\rangle,A|v\rangle)\)</span> is real,
+non-negative</p>
+<p>A positive operator is necessarily Hermitian. (Any <span
+class="math inline">\(A\)</span> can be written as <span
+class="math inline">\(A=B+iC\)</span>, where <span
+class="math inline">\(B\)</span> and <span
+class="math inline">\(C\)</span> are Hermitian)</p>
+<p><strong>tensor product</strong> of two Hilbert spaces</p>
+<p><strong>Kronecker product</strong> of two matrices</p>
+<p>operator functions <span class="math inline">\(f(A)\equiv\sum
+f(\lambda)|\lambda\rangle\langle\lambda|\)</span></p>
+<p>trace <span class="math inline">\(tr(A)=\sum A_{ii}=\sum \langle
+i|A|i\rangle\)</span></p>
+<p>trace is invariant under the unitary similarity transformation</p>
+<p>thus the trace of an operator is any trace of its matrix
+representation</p>
+<p>commutator <span class="math inline">\([A,B]=AB-BA\)</span></p>
+<p>anticommutator <span class="math inline">\(\{A,B\}=AB+BA\)</span></p>
+<p><span class="math inline">\([A,B]=0\)</span> if and only if <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> are simultaneously diagonalizable</p>
+<p><strong>Polar decomposition</strong> <span
+class="math inline">\(A=UJ=KU\)</span>, where <span
+class="math inline">\(U\)</span> is unitary, <span
+class="math inline">\(J\)</span> and <span
+class="math inline">\(K\)</span> are positive operators.</p>
+<p><strong>Singular value decomposition</strong> <span
+class="math inline">\(A=UDV\)</span>, where <span
+class="math inline">\(U\)</span> and <span
+class="math inline">\(V\)</span> are unitary, <span
+class="math inline">\(D\)</span> is a diagonal matrix with non-negative
+entries.</p>
+<h2 id="the-postulates-of-quantum-mechanics">2.2 The postulates of
+quantum mechanics</h2>
+<p><strong>Postulate 1:</strong> state space</p>
+<p><strong>Postulate 2:</strong> evolution (of a closed system)</p>
+<p>Hadamard gate <span class="math inline">\(H=\frac{1}{\sqrt
+2}(|0\rangle+|1\rangle)\langle 0|+\frac{1}{\sqrt
+2}(|0\rangle-|1\rangle)\langle 1|\)</span></p>
+<p><span class="math inline">\(H\)</span> is Hermitian and unitary.</p>
+<p><strong>Postulate 3:</strong> quantum measurement</p>
+<p>the measurement of a qubit in the computational basis</p>
+<p>distinguishability of quantum states</p>
+<p>projective measurements</p>
+<ul>
+<li>observable <span class="math inline">\(M\)</span>, a Hermitian</li>
+<li><span class="math inline">\(\langle M\rangle\)</span></li>
+<li><span class="math inline">\(\Delta(M)=\sqrt{\langle
+M^2\rangle-\langle M\rangle}\)</span></li>
+</ul>
+<p>the Heisenberg uncertainty principle : <span class="math display">\[
+\Delta(C)\Delta(D)\geq \frac{|\langle\psi|[C,D]|\psi\rangle|}{2}
+\]</span> measurement of spin along the <span
+class="math inline">\(\vec{v}\)</span> axis: an observable <span
+class="math inline">\(\vec{v}\cdot\vec{\sigma}=v_1\sigma_1+v_2\sigma_2+v_3\sigma_3\)</span></p>
+<p>POVM <span class="math inline">\(\{E_m\}\)</span>, <span
+class="math inline">\(\sum_m E_m=I\)</span>, positive operator</p>
+<p>one sided error of distinguishing two (not necessarily orthogonal)
+states</p>
+<p>${M_m^}M_m=E_m$ unitary <span class="math inline">\(U_m\)</span> s.t.
+<span class="math inline">\(M_m=U_m\sqrt{E_m}\)</span></p>
+<p>equivalence up to the <em>global phase factor</em></p>
+<p><strong>Postulate 4:</strong> the state space of a composite
+system</p>
+<p>a linear operator on a subspace which preserves inner product can be
+extended to the entire space as a unitary operator</p>
+<p>unitary dynamics + projective measurements + ability to introduce
+ancillary systems = Postulate 3</p>
+<p>superdense coding</p>
+<p>Bell states: 00+11, 00-11, 01+10, 01-10</p>
+<p>for all bell states, <span class="math inline">\(\langle\psi|E\otimes
+I|\psi\rangle=\frac{1}{2}(\langle 0|E|0\rangle+\langle
+1|E|1\rangle)\)</span>, thus undistinguishable by only the first
+qubit.</p>
+<p>density operator <span class="math inline">\(\rho\)</span>:</p>
+<ul>
+<li>positive operator</li>
+<li><span class="math inline">\(tr(\rho)=1\)</span></li>
+</ul>
+<p><span class="math inline">\(tr(\rho^2)\leq 1\)</span> with equality
+iff <span class="math inline">\(\rho\)</span> is a pure state <span
+class="math display">\[
+\rho=\sum_i p_i|\psi_i\rangle\langle\psi_i|=\sum_j
+q_j|φ_j\rangle\langleφ_j|\Longleftrightarrow \exists U\ \sqrt
+{p_i}|\psi_i\rangle=\sum_j u_{ij}\sqrt{q_j}|φ_j\rangle
+\]</span> an arbitrary density matrix for a qubit may be written as
+<span class="math display">\[
+\rho=\frac{I+\vec{r}\cdot\vec{\sigma}}{2}
+\]</span> partial trace <span class="math inline">\(\rho^A\equiv
+tr_B(\rho^{AB})\)</span> defined by <span
+class="math inline">\(tr_B(\rho\otimes\sigma)=\rho\
+\mathrm{tr}(\sigma)\)</span></p>
+<p>the reduced density operator for Bell states is <span
+class="math inline">\(\frac{I}{2}\)</span></p>
+<p>why partial trace? the unique function that satisfies <span
+class="math inline">\(tr(M\rho^A)=tr((M\otimes I)\rho^{AB})\)</span>,
+the correct measurement statistics</p>
+<p>Schmidt decomposition: <span class="math display">\[
+|\psi\rangle=\sum_i\lambda_i|i_A\rangle|i_B\rangle
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(|\psi\rangle\)</span> is any pure
+state of <span class="math inline">\(AB\)</span></p></li>
+<li><p><span class="math inline">\(|i_A\rangle\)</span> are orthonormal
+states for <span class="math inline">\(A\)</span>, <span
+class="math inline">\(|i_B\rangle\)</span> are orthonormal states for
+<span class="math inline">\(B\)</span></p></li>
+<li><p><span class="math inline">\(\lambda_i\)</span> are non-negative
+real numbers satisfying <span
+class="math inline">\(\sum_i\lambda_i^2=1\)</span></p></li>
+<li><p><span
+class="math inline">\(\rho^A=\sum_i\lambda_i^2|i_A\rangle\langle
+i_A|\)</span>, <span
+class="math inline">\(\rho^B=\sum_i\lambda_i^2|i_B\rangle\langle
+i_B|\)</span>, the eigenvalues of <span
+class="math inline">\(\rho^A\)</span> and <span
+class="math inline">\(\rho^B\)</span> are identical</p></li>
+<li><p>a symmetry between component systems of a pure state</p></li>
+<li><p>Schmidt bases, Schmidt number</p></li>
+<li><p>Schmidt number quantifies the "amount" of entanglement, preserved
+under unitary transformation on component system. <span
+class="math inline">\(|\psi\rangle\)</span> is a product state if and
+only if it has Schmidt number 1.</p></li>
+</ul>
+<p>purification:</p>
+<ul>
+<li><p>suppose <span class="math inline">\(\rho^A=\sum_i
+p_i|i^A\rangle\langle i^A|\)</span></p></li>
+<li><p>define <span class="math inline">\(|AR\rangle\equiv
+\sum_i\sqrt{p_i}|i^A\rangle|i^R\rangle\)</span></p></li>
+<li><p>then <span class="math inline">\(tr_R(|AR\rangle\langle
+AR|)=\rho^A\)</span></p></li>
+</ul>
+<p>for a pure state phi of AB, calculate the decomposition of rho^A and
+rho^B, then the Schmidt decomposition of phi is derived? <span
+class="math display">\[
+(\rho^A,\rho^B)\text{ uniquely determine } \rho^{AB}?
+\]</span></p>
+]]></content>
+      <categories>
+        <category>Course Notes</category>
+        <category>NJU</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Advanced Algorithm (Fall 2021 NJU)</title>
+    <url>/2021/12/31/Advanced%20Algorithm/</url>
+    <content><![CDATA[<blockquote>
+<p>Course Homepage: <a
+href="https://tcs.nju.edu.cn/wiki/index.php?title=%E9%AB%98%E7%BA%A7%E7%AE%97%E6%B3%95_(Fall_2021)">Advanced
+Algorithms</a></p>
+</blockquote>
+<h2 id="min-cut-and-max-cut">Min-Cut and Max-Cut</h2>
 <h3 id="kargers-min-cut-algorithm">Karger's Min-Cut Algorithm</h3>
 <p>pick an edge uniformly at random and contract it</p>
 <p><strong>Theorem:</strong></p>
@@ -120,12 +382,14 @@ where <span
 class="math inline">\(\bar{Y}=\frac{1}{k}\sum_{j=1}^{k}Y_j\)</span></p></li>
 </ul>
 <p><span class="math display">\[
-\mathbb{E}[\bar{Y}]=\frac{1}{n+1},\mathbf{Var}[\bar{Y}]\leq\frac{1}{k(n+1)^2}\\
-\Pr\big[\hat{Z}&lt;(1-\epsilon)n\textrm{ or
+\begin{align*}
+&amp;\mathbb{E}[\bar{Y}]=\frac{1}{n+1},\mathbf{Var}[\bar{Y}]\leq\frac{1}{k(n+1)^2}\\
+&amp;\Pr\big[\hat{Z}&lt;(1-\epsilon)n\textrm{ or
 }\hat{Z}&gt;(1+\epsilon)n\big]
 \leq\Pr\left[|\bar{Y}-\mathbb{E}[\bar{Y}]|&gt;\frac{\epsilon/2}{n+1}\right]
 \leq\frac{4}{k\epsilon^2}
 \leq\delta
+\end{align*}
 \]</span></p>
 <p>Space cost: <span
 class="math inline">\(k=\lceil4/(\epsilon^2\delta)\rceil\)</span> real
@@ -391,8 +655,10 @@ class="math display">\[
 \Pr[X\geq t]\leq 2^{-t}
 \]</span> For any <span class="math inline">\(t&gt;0\)</span>: <span
 class="math display">\[
+\begin{align*}
 \Pr[X\geq\mathbb{E}[X]+t]\leq\exp\left(-\frac{2t^2}{n}\right)\\
 \Pr[X\leq\mathbb{E}[X]-t]\leq\exp\left(-\frac{2t^2}{n}\right)
+\end{align*}
 \]</span> A party of <span class="math inline">\(O(\sqrt{n\log
 n})\)</span> can manipulate a vote w.h.p.</p>
 <p><strong>Hoeffding Bound</strong></p>
@@ -401,8 +667,10 @@ n})\)</span> can manipulate a vote w.h.p.</p>
 independent (or negatively associated),</p>
 <p>for any <span class="math inline">\(t&gt;0\)</span>: <span
 class="math display">\[
+\begin{align*}
 \Pr[X\geq\mathbb{E}[X]+t]\leq\exp\left(-\frac{2t^2}{\sum_{i=1}^{n}(b_i-a_i)^2}\right)\\
 \Pr[X\leq\mathbb{E}[X]-t]\leq\exp\left(-\frac{2t^2}{\sum_{i=1}^{n}(b_i-a_i)^2}\right)
+\end{align*}
 \]</span> <strong>Sub-Gaussian Random Variables</strong></p>
 <p>A centered (<span class="math inline">\(\mathbb{E}[Y]=0\)</span>)
 random variable <span class="math inline">\(Y\)</span> is said to be
@@ -419,13 +687,17 @@ negatively associated) and centered (i.e. <span
 class="math inline">\(\mathbb{E}[Y_i]=0\)</span>),</p>
 <p>for any <span class="math inline">\(t&gt;0\)</span>: <span
 class="math display">\[
+\begin{align*}
 \Pr[Y\geq t]\leq\exp\left(-\frac{t^2}{2\sum_{i=1}^{n}\nu_i}\right)\\
 \Pr[Y\leq-t]\leq\exp\left(-\frac{t^2}{2\sum_{i=1}^{n}\nu_i}\right)
+\end{align*}
 \]</span> <strong>Poisson Tails</strong></p>
 <p>For <span class="math inline">\(Y\sim\mathrm{Pois}(\mu)\)</span>,
 <span class="math display">\[
+\begin{align*}
 k&gt;\mu\Longrightarrow\Pr[X&gt;k]&lt;e^{-\mu}\left(\frac{e\mu}{k}\right)^k\\
 k&lt;\mu\Longrightarrow\Pr[X&lt;k]&lt;e^{-\mu}\left(\frac{e\mu}{k}\right)^k
+\end{align*}
 \]</span></p>
 <h3 id="the-method-of-bounded-differences">The Method of Bounded
 Differences</h3>
@@ -612,19 +884,23 @@ class="math inline">\(O(kd)\)</span></p>
 <p>for suitable <span class="math inline">\(k=O(\log n)\)</span>, <span
 class="math inline">\(p\)</span> and <span
 class="math inline">\(s\)</span>: <span class="math display">\[
+\begin{align*}
 \forall x,y\in\{0,1\}^d:\quad
 \mathrm{dist}(x,y)\leq r\quad\quad\
 \Rightarrow\Pr[\mathrm{dist}(Ax,Ay)&gt;s]&lt;1/n^2\\
 \quad\quad\quad\quad\quad\quad\quad\quad\  \mathrm{dist}(x,y)&gt; c\cdot
 r\quad\Rightarrow\Pr[\mathrm{dist}(Ax,Ay)\leq s]&lt;1/n^2
+\end{align*}
 \]</span></p>
 <h3 id="locality-sensitive-hashing">Locality Sensitive Hashing</h3>
 <p>A random <span class="math inline">\(h:X\rightarrow U\)</span> is an
 <strong><span class="math inline">\((r,cr,p,q)\)</span>-LSH</strong> if
 <span class="math inline">\(\forall x,y\in X:\)</span> <span
 class="math display">\[
+\begin{align*}
 \mathrm{dist}(x,y)\leq r\Longrightarrow\Pr[h(x)=h(y)]\geq p\\
 \mathrm{dist}(x,y)&gt;c\cdot r\Longrightarrow\Pr[h(x)=h(y)]\leq q
+\end{align*}
 \]</span></p>
 <p>an <span class="math inline">\((r,cr,p,q)\)</span>-LSH <span
 class="math inline">\(h:X\rightarrow U\)</span> <span
@@ -698,12 +974,14 @@ arbitrary cut</li>
 increases cut, then switch side</li>
 </ul>
 <p>in a local optima (fixed point): <span class="math display">\[
-\forall v\in
+\begin{align*}
+\forall &amp;v\in
 S:|E(v,S)|\leq|E(v,T)|\Longrightarrow2|E(S,S)|\leq|E(S,T)|\\
-\forall v\in
+\forall &amp;v\in
 T:|E(v,T)|\leq|E(v,S)|\Longrightarrow2|E(T,T)|\leq|E(S,T)|\\
-\Longrightarrow |E(S,S)|+|E(T,T)|\leq|E(S,T)|\\
-\Longrightarrow |E(S,T)|\geq\frac{1}{2}|E|\geq\frac{1}{2}OPT
+&amp;\Longrightarrow |E(S,S)|+|E(T,T)|\leq|E(S,T)|\\
+&amp;\Longrightarrow |E(S,T)|\geq\frac{1}{2}|E|\geq\frac{1}{2}OPT
+\end{align*}
 \]</span></p>
 <h3 id="scheduling">Scheduling</h3>
 <p><strong>Instance</strong>: <span class="math inline">\(n\)</span>
@@ -756,10 +1034,10 @@ class="math inline">\(\bigcup_{i\in C}S_i=U\)</span>.</p>
 <p><strong>Greedy Cover:</strong></p>
 <p>initially <span class="math inline">\(C=\emptyset\)</span></p>
 <p>while <span class="math inline">\(U\neq\emptyset\)</span> do:</p>
-<p>​ add <span class="math inline">\(i\)</span> with largest <span
+<p>add <span class="math inline">\(i\)</span> with largest <span
 class="math inline">\(|S_i\cap U|\)</span> to <span
 class="math inline">\(C\)</span></p>
-<p>​ <span class="math inline">\(U=U\backslash S_i\)</span></p>
+<p><span class="math inline">\(U=U\backslash S_i\)</span></p>
 <h2 id="rounding-dynamic-programs">Rounding Dynamic Programs</h2>
 <p>(to be done)</p>
 ]]></content>
