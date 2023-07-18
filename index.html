@@ -150,6 +150,235 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.sdcgvhgj.top/2023/07/18/C++/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="sdcgvhgj">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sdcgvhgj's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/07/18/C++/" class="post-title-link" itemprop="url">C++</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-07-18 00:00:00 / Modified: 16:06:18" itemprop="dateCreated datePublished" datetime="2023-07-18T00:00:00+08:00">2023-07-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Development-Related/" itemprop="url" rel="index"><span itemprop="name">Development Related</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="google-c-style">Google C++ Style</h2>
+<p>https://google.github.io/styleguide/cppguide.html</p>
+<h2 id="short-tutorial">Short Tutorial</h2>
+<p>https://www.thegeekstuff.com/2016/02/c-plus-plus-11/</p>
+<h3 id="enum">enum</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">enum class CoordinateArea &#123; FirstArea, SecondArea, ThirdArea, FourthArea&#125;;</span><br><span class="line"></span><br><span class="line">CoordinateArea caOne = CoordinateArea::FirstArea;</span><br><span class="line">CoordinateArea caSome= CoordinateArea::FourhtArea;</span><br></pre></td></tr></table></figure>
+<h3 id="lambda-function">lambda function</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[firstPart](secondPart) TypeYouReturn&#123; BodyOfLambda&#125;(acctualParameters);</span><br><span class="line"></span><br><span class="line">vectror&lt;int&gt; iVector;</span><br><span class="line">for_each( begin(iVector), end(iVector), [](int n)&#123;if(n%2==0)cout&lt;&lt;n&lt;&lt;end;&#125;);</span><br></pre></td></tr></table></figure>
+<p>[firstPart]</p>
+<ul>
+<li><p>[] nothing</p></li>
+<li><p>[&amp;] reference</p></li>
+<li><p>[=] copy</p></li>
+<li><p>[this]</p></li>
+</ul>
+<h3 id="static-assertion">static assertion</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">static_assert(evaluatedExpression, stringMessage);</span><br><span class="line"></span><br><span class="line">static_assert(sizeof(long long int)&gt;=16;”This is unexpected”);</span><br></pre></td></tr></table></figure>
+<h3 id="move-and">Move and &amp;&amp;</h3>
+<p>one could use rvalue as reference as well</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MovableClass&amp;&amp; operator=(MovableClass&amp;&amp;); </span><br></pre></td></tr></table></figure>
+<h3 id="pointers">Pointers</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">unique_ptr&lt;someType&gt; suniquePtr(new someType(args));</span><br><span class="line">...</span><br><span class="line">uniquePtr.release();</span><br><span class="line"></span><br><span class="line">shared_ptr&lt;someType&gt; somePtr(new someType(args));</span><br><span class="line"></span><br><span class="line">weak_ptr&lt;someType&gt; weakPtr= somePtr;</span><br></pre></td></tr></table></figure>
+<h3 id="tuple">Tuple</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auto tuple = make_tuple(“triangle”, ‘t’, 10, 15, 20);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.sdcgvhgj.top/2023/07/18/Git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="sdcgvhgj">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sdcgvhgj's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/07/18/Git/" class="post-title-link" itemprop="url">Git</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-07-18 00:00:00 / Modified: 15:56:44" itemprop="dateCreated datePublished" datetime="2023-07-18T00:00:00+08:00">2023-07-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Development-Related/" itemprop="url" rel="index"><span itemprop="name">Development Related</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>Git tutorial:
+https://docs.github.com/en/get-started/using-git/about-git</p>
+<p>Git docs https://git-scm.com/docs</p>
+</blockquote>
+<h3 id="设置代理用户名邮箱">设置代理，用户名，邮箱</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy 127.0.0.1:10809</span><br><span class="line">git config --global https.proxy 127.0.0.1:10809</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name sdcgvhgj</span><br><span class="line">git config --global user.email sdcgvhgj@qq.com</span><br></pre></td></tr></table></figure>
+<p>其中 <code>--global</code> 表示对所有repository生效</p>
+<h3 id="clone">Clone</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/USERNAME/REPOSITORY.git</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Make new folder</li>
+<li>Initialize as a Git repository</li>
+<li>Create remote <code>origin</code></li>
+<li>Fetch all branches</li>
+<li>Check out the default branch</li>
+</ul>
+<h3 id="add-remote">Add Remote</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add upstream REMOTE_URL</span><br></pre></td></tr></table></figure>
+<p>add a new remote called <code>upstream</code></p>
+<h3 id="fetch">Fetch</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch REMOTE-NAME</span><br></pre></td></tr></table></figure>
+<p>grabs all the new remote-tracking branches and tags <em>without</em>
+merging those changes into your own branches.</p>
+<h3 id="merge">Merge</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge REMOTE-NAME/BRANCH-NAME</span><br></pre></td></tr></table></figure>
+<p>merge a remote-tracking branch (i.e., a branch fetched from a remote
+repository) with your local branch</p>
+<h3 id="pull">Pull</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull REMOTE-NAME BRANCH-NAME</span><br></pre></td></tr></table></figure>
+<p>complete both <code>git fetch</code> and <code>git merge</code></p>
+<p>use <code>git merge --abort</code> to take the branch back to where
+it was in before you pulled</p>
+<h3 id="contribute">Contribute</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch my-branch</span><br></pre></td></tr></table></figure>
+<p>create a new branch</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout my-branch</span><br></pre></td></tr></table></figure>
+<p>switch to that branch</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add file1.md file2.md</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<p>stage the changed files</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;edit file1.md, file2.md&quot;</span><br></pre></td></tr></table></figure>
+<p>commit changes</p>
+<h3 id="push">Push</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push REMOTE-NAME BRANCH-NAME</span><br></pre></td></tr></table></figure>
+<p>push your local changes to your online repository</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push REMOTE-NAME LOCAL-BRANCH-NAME:REMOTE-BRANCH-NAME</span><br></pre></td></tr></table></figure>
+<p>push the <code>LOCAL-BRANCH-NAME</code> to your
+<code>REMOTE-NAME</code>, but it is renamed to
+<code>REMOTE-BRANCH-NAME</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u REMOTE-NAME BRANCH-NAME</span><br></pre></td></tr></table></figure>
+<p><code>-u</code> specifies default branch for future
+<code>git push</code> and <code>git pull</code> commands</p>
+<h4 id="non-fast-forward-error">non-fast-forward error:</h4>
+<ul>
+<li><p>occurs when another person has pushed to the same branch as
+you</p></li>
+<li><p>pull first before push</p></li>
+</ul>
+<h3 id="others">Others</h3>
+<p><code>git init</code> initialize your repository (create
+<code>.git</code> file in current folder)</p>
+<p><code>git status</code> shows the status of changes as untracked,
+modified, or staged</p>
+<p><code>git branch</code> shows the branches being worked on
+locally</p>
+<p><code>git branch -M BRANCH-NAME</code> rename the current branch to
+<code>BRANCH-NAME</code></p>
+<p><code>git remote -v</code> verify remote URLs</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://blog.sdcgvhgj.top/2022/06/27/Quantum%20Computing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -181,7 +410,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-07-02 15:33:47" itemprop="dateModified" datetime="2023-07-02T15:33:47+08:00">2023-07-02</time>
+                <time title="Modified: 2023-07-18 15:53:54" itemprop="dateModified" datetime="2023-07-18T15:53:54+08:00">2023-07-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1394,14 +1623,14 @@ class="math inline">\(C\)</span></p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
