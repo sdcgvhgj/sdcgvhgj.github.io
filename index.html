@@ -266,7 +266,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-07-18 00:00:00 / Modified: 15:56:44" itemprop="dateCreated datePublished" datetime="2023-07-18T00:00:00+08:00">2023-07-18</time>
+              <time title="Created: 2023-07-18 00:00:00 / Modified: 16:35:52" itemprop="dateCreated datePublished" datetime="2023-07-18T00:00:00+08:00">2023-07-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -292,12 +292,24 @@
           <blockquote>
 <p>Git tutorial:
 https://docs.github.com/en/get-started/using-git/about-git</p>
-<p>Git docs https://git-scm.com/docs</p>
+<p>Git docs: https://git-scm.com/docs</p>
 </blockquote>
-<h3 id="设置代理用户名邮箱">设置代理，用户名，邮箱</h3>
+<h3 id="configuration">Configuration</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy 127.0.0.1:10809</span><br><span class="line">git config --global https.proxy 127.0.0.1:10809</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name sdcgvhgj</span><br><span class="line">git config --global user.email sdcgvhgj@qq.com</span><br></pre></td></tr></table></figure>
-<p>其中 <code>--global</code> 表示对所有repository生效</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name sdcgvhgj</span><br><span class="line">git config --global user.email sdcgvhgj@gmail.com</span><br></pre></td></tr></table></figure>
+<p>where <code>--global</code> means it works for all repositories</p>
+<h4 id="ssh-key">SSH key</h4>
+<ol type="1">
+<li>Generate SSH key:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -o -t rsa -C &quot;sdcgvhgj@gmail.com&quot;</span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>Copy your key:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /root/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>Add your key at https://github.com/settings/keys</li>
+</ol>
 <h3 id="clone">Clone</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/USERNAME/REPOSITORY.git</span><br></pre></td></tr></table></figure>
 <ul>
@@ -359,7 +371,7 @@ modified, or staged</p>
 locally</p>
 <p><code>git branch -M BRANCH-NAME</code> rename the current branch to
 <code>BRANCH-NAME</code></p>
-<p><code>git remote -v</code> verify remote URLs</p>
+<p><code>git remote -v</code> shows remote URLs</p>
 
       
     </div>
