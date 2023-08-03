@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"blog.sdcgvhgj.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Reference: Git tutorial, Git docs Git Book  Configuration 12git config --global http.proxy 127.0.0.1:10809git config --global https.proxy 127.0.0.1:10809 12git config --global user.name sdcgvhg">
+  <meta name="description" content="123g++ gdbdemo.cpp -ggdb -o maingdb main https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;41420814&#x2F;how-to-view-the-internal-data-of-a-smart-pointer-inside-gdb cntr+xa: TUI basics 1234567891011121314run FILE_NA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git">
-<meta property="og:url" content="https://blog.sdcgvhgj.top/2023/07/18/Git/index.html">
+<meta property="og:title" content="GDB Basic Usage">
+<meta property="og:url" content="https://blog.sdcgvhgj.top/2023/07/18/gdb/index.html">
 <meta property="og:site_name" content="sdcgvhgj&#39;s blog">
-<meta property="og:description" content="Reference: Git tutorial, Git docs Git Book  Configuration 12git config --global http.proxy 127.0.0.1:10809git config --global https.proxy 127.0.0.1:10809 12git config --global user.name sdcgvhg">
+<meta property="og:description" content="123g++ gdbdemo.cpp -ggdb -o maingdb main https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;41420814&#x2F;how-to-view-the-internal-data-of-a-smart-pointer-inside-gdb cntr+xa: TUI basics 1234567891011121314run FILE_NA">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-07-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-02T10:39:04.730Z">
+<meta property="article:modified_time" content="2023-08-03T06:52:30.153Z">
 <meta property="article:author" content="sdcgvhgj">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://blog.sdcgvhgj.top/2023/07/18/Git/">
+<link rel="canonical" href="https://blog.sdcgvhgj.top/2023/07/18/gdb/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>Git | sdcgvhgj's blog</title>
+  <title>GDB Basic Usage | sdcgvhgj's blog</title>
   
 
 
@@ -155,7 +155,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.sdcgvhgj.top/2023/07/18/Git/">
+    <link itemprop="mainEntityOfPage" href="https://blog.sdcgvhgj.top/2023/07/18/gdb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -168,7 +168,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Git
+          GDB Basic Usage
         </h1>
 
         <div class="post-meta">
@@ -185,7 +185,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-08-02 18:39:04" itemprop="dateModified" datetime="2023-08-02T18:39:04+08:00">2023-08-02</time>
+                <time title="Modified: 2023-08-03 14:52:30" itemprop="dateModified" datetime="2023-08-03T14:52:30+08:00">2023-08-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -208,106 +208,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <blockquote>
-<p>Reference: <a
-target="_blank" rel="noopener" href="https://docs.github.com/en/get-started/using-git/about-git">Git
-tutorial</a>, <a target="_blank" rel="noopener" href="https://git-scm.com/docs">Git docs</a> <a
-target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2">Git Book</a></p>
-</blockquote>
-<h3 id="configuration">Configuration</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy 127.0.0.1:10809</span><br><span class="line">git config --global https.proxy 127.0.0.1:10809</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name sdcgvhgj</span><br><span class="line">git config --global user.email sdcgvhgj@gmail.com</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.editor &quot;nano -w&quot;</span><br></pre></td></tr></table></figure>
-<p>where <code>--global</code> means it works for all repositories</p>
-<h4 id="ssh-key">SSH key</h4>
-<ol type="1">
-<li>Generate SSH key:</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -o -t rsa -C &quot;sdcgvhgj@gmail.com&quot;</span><br></pre></td></tr></table></figure>
-<ol start="2" type="1">
-<li>Copy your key:</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /root/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
-<ol start="3" type="1">
-<li>Add your key at <a target="_blank" rel="noopener" href="https://github.com/settings/keys">GitHub
-key settings</a></li>
-</ol>
-<h3 id="clone">Clone</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/USERNAME/REPOSITORY.git</span><br></pre></td></tr></table></figure>
-<p>What this does:</p>
-<ul>
-<li>make new folder</li>
-<li>initialize as a Git repository</li>
-<li>create remote <code>origin</code></li>
-<li>fetch all branches</li>
-<li>check out the default branch</li>
-</ul>
-<h3 id="add-remote">Add Remote</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add upstream REMOTE_URL</span><br></pre></td></tr></table></figure>
-<p>add a new remote called <code>upstream</code></p>
-<h3 id="fetch">Fetch</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch REMOTE-NAME</span><br></pre></td></tr></table></figure>
-<p>grabs all the new remote-tracking branches and tags <em>without</em>
-merging those changes into your own branches.</p>
-<h3 id="merge">Merge</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge REMOTE-NAME/BRANCH-NAME</span><br></pre></td></tr></table></figure>
-<p>merge a remote-tracking branch (i.e., a branch fetched from a remote
-repository) with your local branch</p>
-<h3 id="pull">Pull</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull REMOTE-NAME BRANCH-NAME</span><br></pre></td></tr></table></figure>
-<p>complete both <code>git fetch</code> and <code>git merge</code></p>
-<p>use <code>git merge --abort</code> to take the branch back to where
-it was in before you pulled</p>
-<h3 id="contribute">Contribute</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch my-branch</span><br></pre></td></tr></table></figure>
-<p>create a new branch</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout my-branch</span><br></pre></td></tr></table></figure>
-<p>switch to that branch</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add file1.md file2.md</span><br></pre></td></tr></table></figure>
-<p>or</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-<p>stage the changed files</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;edit file1.md, file2.md&quot;</span><br></pre></td></tr></table></figure>
-<p>commit changes</p>
-<h3 id="push">Push</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push REMOTE-NAME BRANCH-NAME</span><br></pre></td></tr></table></figure>
-<p>push your local changes to your online repository</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push REMOTE-NAME LOCAL-BRANCH-NAME:REMOTE-BRANCH-NAME</span><br></pre></td></tr></table></figure>
-<p>push the <code>LOCAL-BRANCH-NAME</code> to your
-<code>REMOTE-NAME</code>, but it is renamed to
-<code>REMOTE-BRANCH-NAME</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u REMOTE-NAME BRANCH-NAME</span><br></pre></td></tr></table></figure>
-<p><code>-u</code> specifies default branch for future
-<code>git push</code> and <code>git pull</code> commands</p>
-<h4 id="non-fast-forward-error">non-fast-forward error:</h4>
-<ul>
-<li><p>occurs when another person has pushed to the same branch as
-you</p></li>
-<li><p>pull first before push</p></li>
-</ul>
-<h3 id="others">Others</h3>
-<p><code>git init</code> initialize your repository (create
-<code>.git</code> file in current folder)</p>
-<p><code>git status</code> shows the status of changes as untracked,
-modified, or staged</p>
-<p><code>git log --graph</code> show log</p>
-<p><code>git branch -v</code> shows the branches being worked on
-locally</p>
-<p><code>git branch BRANCH-NAME</code> create branch</p>
-<p><code>git branch -d BRANCH-NAME</code> delete branch</p>
-<p><code>git branch -M BRANCH-NAME</code> rename the current branch to
-<code>BRANCH-NAME</code></p>
-<p><code>git remote -v</code> shows remote URLs</p>
-<p><code>git checkout BRANCH-NAME</code> switch branch</p>
-<p><code>git tag</code> list all tags</p>
-<p><code>git reset --hard HEAD</code> throw all uncommitted changes</p>
-<p><code>git commit --amend -m "commit info"</code></p>
-<p><code>git rebase main</code> rebase current branch to
-<code>main</code></p>
-<p><code>git stash save "info"</code> save uncommitted files</p>
-<p><code>git stash pop</code></p>
-<p><code>git revert</code></p>
-<p><code>git reflog</code></p>
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">g++ gdbdemo.cpp -ggdb -o main</span><br><span class="line">gdb main</span><br></pre></td></tr></table></figure>
+<p>https://stackoverflow.com/questions/41420814/how-to-view-the-internal-data-of-a-smart-pointer-inside-gdb</p>
+<p>cntr+xa: TUI</p>
+<h2 id="basics">basics</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">run FILE_NAME</span><br><span class="line">start //break main &amp; run</span><br><span class="line">break FILE_NAME:FUNCTION_NAME</span><br><span class="line">where //trace along with the line number.</span><br><span class="line">next</span><br><span class="line">list</span><br><span class="line">list ROW_NUMBER</span><br><span class="line">print VARIABLE_NAME</span><br><span class="line">print VARIABLE_NAME=VALUE</span><br><span class="line">info locals</span><br><span class="line">continue</span><br><span class="line">disable</span><br><span class="line">make FILE_NAME</span><br><span class="line">restart</span><br></pre></td></tr></table></figure>
+<h2 id="others">others</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">info gdb 					//Manual</span><br><span class="line">info locals 				        //Vars in local scope</span><br><span class="line">info variables				//Vars declared outside current scope</span><br><span class="line">info functions				//Names and datatypes of all defined functions</span><br><span class="line">info b 						//List all breakpoints</span><br><span class="line">break funcName				//Set breakpoint at function funcName (short: b funcName)</span><br><span class="line">break file::line			        //Set breakpoint at line in file</span><br><span class="line">layout next					//Cycle through the layouts of gdb</span><br><span class="line">p var 						//Print the value of variable var</span><br><span class="line">p var = value 			        	//Force set value to a var</span><br><span class="line">run 						        //Start the program</span><br><span class="line">start 						//Synonymous to (b main &amp;&amp; run). Puts temporary b at main</span><br><span class="line">next 						//Execute the current line in source (short: n)</span><br><span class="line">step 						//Step into function call at current line (short: s)</span><br><span class="line">finish						//Finish the execution of current function (short: fin)</span><br><span class="line">continue					//Resume execution (After a breakpoint) (short: c)</span><br><span class="line">refresh 					        //Repaint the interface (To fix corrupted interface)</span><br><span class="line">shell cmd 					//Run shell command cmd from gdb prompt</span><br><span class="line">python gdb.execute(cmd)		//Run a gdb command cmd from python prompt</span><br><span class="line">set print pretty on			//Enable pretty printing</span><br><span class="line">							  (Put in ~/.gdbinit)</span><br><span class="line">$ gdb -c core.num			//Examine the dumped core file from a SIGSEGV(shell command)</span><br><span class="line">bt							//Print backtrace</span><br><span class="line">break _exit 				        //Breakpoint at exit of program</span><br><span class="line">whatis expr					//Print datatype of expr</span><br><span class="line">ptype expr					//Detailed print of datatype of expr</span><br><span class="line">watch var 					//Stop when var is modified</span><br><span class="line">watch -l foo				        //Watch foo loaction</span><br><span class="line">rwatch foo					//Stop when foo is read</span><br><span class="line">watch foo if foo&gt;10			//Watch foo conditionally</span><br><span class="line">delete						//Delete all breakpoints</span><br><span class="line">delete breakpoint_no		        //Delete breakpoint breakpoint_no</span><br><span class="line">command breakpoint_no		//Run user listed commands when breakpoint is hit</span><br><span class="line">							  (End list of commands with &#x27;end&#x27;)</span><br><span class="line">file executable 			        //Load the executable for debugging from inside gdb</span><br><span class="line">quit						        //Quit (short: q)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -378,7 +285,7 @@ locally</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#configuration"><span class="nav-number">1.</span> <span class="nav-text">Configuration</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ssh-key"><span class="nav-number">1.1.</span> <span class="nav-text">SSH key</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clone"><span class="nav-number">2.</span> <span class="nav-text">Clone</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#add-remote"><span class="nav-number">3.</span> <span class="nav-text">Add Remote</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fetch"><span class="nav-number">4.</span> <span class="nav-text">Fetch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#merge"><span class="nav-number">5.</span> <span class="nav-text">Merge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pull"><span class="nav-number">6.</span> <span class="nav-text">Pull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#contribute"><span class="nav-number">7.</span> <span class="nav-text">Contribute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#push"><span class="nav-number">8.</span> <span class="nav-text">Push</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#non-fast-forward-error"><span class="nav-number">8.1.</span> <span class="nav-text">non-fast-forward error:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#others"><span class="nav-number">9.</span> <span class="nav-text">Others</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#basics"><span class="nav-number">1.</span> <span class="nav-text">basics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#others"><span class="nav-number">2.</span> <span class="nav-text">others</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

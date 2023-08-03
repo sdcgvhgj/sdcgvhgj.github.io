@@ -150,6 +150,173 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.sdcgvhgj.top/2023/07/26/Interview%20Related/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="sdcgvhgj">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sdcgvhgj's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/07/26/Interview%20Related/" class="post-title-link" itemprop="url">Interview Related</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-07-26 00:00:00" itemprop="dateCreated datePublished" datetime="2023-07-26T00:00:00+08:00">2023-07-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-27 22:02:25" itemprop="dateModified" datetime="2023-07-27T22:02:25+08:00">2023-07-27</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://xiaolincoding.com/">小林coding</a></p>
+<p><a target="_blank" rel="noopener" href="https://interviewguide.cn/">阿秀的学习笔记</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.sdcgvhgj.top/2023/07/18/Bash%20Commands/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="sdcgvhgj">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sdcgvhgj's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/07/18/Bash%20Commands/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-07-18 19:32:59" itemprop="dateCreated datePublished" datetime="2023-07-18T19:32:59+08:00">2023-07-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-08-01 13:11:38" itemprop="dateModified" datetime="2023-08-01T13:11:38+08:00">2023-08-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><code>sudo -i</code> switch to the root user</p>
+<p><code>passwd</code> change password for current user</p>
+<h3 id="create-alias">create alias</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias ip = &#x27;curl ipinfo.io/ip&#x27;</span><br></pre></td></tr></table></figure>
+<p>this is available only in the current shell session</p>
+<p>to make persistent, add that into <code>~/.bashrc</code></p>
+<p><code>~/.bashrc</code> file is executed whenever bash shell
+started</p>
+<p><code>~</code> represents user's home directory</p>
+<h3 id="enable-no-password-login">enable no password login</h3>
+<ol type="1">
+<li>edit the config file</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/pam.d/gdm-password</span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>add rule to the first line:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auth sufficient pam_succeed_if.so user = sdcgvhgj</span><br></pre></td></tr></table></figure>
+<h3 id="run-a-script-on-startup">run a script on startup</h3>
+<ul>
+<li><code>crontab -e</code> edit the cron table</li>
+<li>add a new line at the bottom</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@reboot /path/to/script arg1 arg2</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>crontab -l</code> list cron table</li>
+</ul>
+<p>another way: use systemd</p>
+<h3 id="append-a-line-to-crontab">append a line to crontab</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(crontab -l; echo &quot;0 4 * * * myscript&quot;)| crontab -</span><br></pre></td></tr></table></figure>
+<h3 id="difference-between-and">difference between ; and &amp;&amp;</h3>
+<p><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6152659/bash-sh-difference-between-and">link</a></p>
+<p>In <code>cmd1 &amp;&amp; cmd2</code>, <code>cmd2</code> is only
+executed if <code>cmd1</code> succeeds (returns 0).</p>
+<p>In <code>cmd1 ; cmd2</code>, <code>cmd2</code> is executed in any
+case.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://blog.sdcgvhgj.top/2023/07/18/C++/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -164,7 +331,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/07/18/C++/" class="post-title-link" itemprop="url">C++</a>
+            <a href="/2023/07/18/C++/" class="post-title-link" itemprop="url">C++ Basics</a>
         </h2>
 
         <div class="post-meta">
@@ -173,10 +340,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2023-07-18 00:00:00 / Modified: 16:06:18" itemprop="dateCreated datePublished" datetime="2023-07-18T00:00:00+08:00">2023-07-18</time>
+              <time title="Created: 2023-07-18 00:00:00" itemprop="dateCreated datePublished" datetime="2023-07-18T00:00:00+08:00">2023-07-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-08-02 16:00:58" itemprop="dateModified" datetime="2023-08-02T16:00:58+08:00">2023-08-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -198,7 +371,73 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="google-c-style">Google C++ Style</h2>
+          <blockquote>
+<p>https://changkun.de/modern-cpp/zh-cn/00-preface/</p>
+<p>https://www.learncpp.com/</p>
+</blockquote>
+<h2 id="install-gcc-compiler-on-windows">Install GCC compiler on
+Windows</h2>
+<p>It is recommended to use <a
+target="_blank" rel="noopener" href="https://www.mingw-w64.org">MinGW-w64</a></p>
+<ol type="1">
+<li>download the release of <a
+target="_blank" rel="noopener" href="https://github.com/skeeto/w64devkit">w64devkit</a></li>
+<li>unzip</li>
+<li>add <code>w64devkit\bin</code> to the <code>PATH</code> environment
+variable</li>
+</ol>
+<p>same to install <a target="_blank" rel="noopener" href="https://cmake.org/">CMake</a></p>
+<h2 id="c并发">C++并发</h2>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://paul.pub/cpp-concurrency/"></a>
+（看了好多资料，要么依赖太多要么讲的太少，终于找到一篇合适的教程，这人讲的真好，举的例子也贴近实际）</p>
+</blockquote>
+<ul>
+<li><p>thread</p>
+<ul>
+<li>join, detach</li>
+<li>yield, get_id, sleep_for, sleep_until</li>
+<li>thread::hardware_concurrency() //硬件并发数</li>
+</ul></li>
+<li><p>mutex</p>
+<ul>
+<li>once_flag, call_once</li>
+<li>mutex, timed_mutex, recursive_mutex, shared_mutex
+(用于读写模型)</li>
+<li>lock(), try_lock(), unlock()</li>
+<li>lock(locable_1, locable_2) 标准库的实现保证不会死锁</li>
+<li>lock_guard, unique_lock, shared_lock, scoped_lock</li>
+</ul></li>
+<li><p>condition_variable</p>
+<ul>
+<li>works only with unique_lock</li>
+<li>check -&gt; unlock -&gt; wait -&gt; lock -&gt; check -&gt; unlock
+-&gt; wait -&gt; lock -&gt; ...</li>
+<li>check -&gt; go on</li>
+</ul></li>
+<li><p>future</p>
+<ul>
+<li>async</li>
+<li>packaged_task</li>
+<li>promise</li>
+</ul></li>
+<li><p>parallel algorithm in <code>&lt;algorithm&gt;</code> and
+<code>&lt;numeric&gt;</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sort(execution::seq, copy1.begin(), copy1.end());</span><br><span class="line">sort(execution::par, copy2.begin(),copy2.end());</span><br><span class="line">sort(execution::par_unseq, copy2.begin(),copy2.end());</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="c内存模型">C++内存模型</h2>
+<blockquote>
+<p>https://paul.pub/cpp-memory-model/</p>
+</blockquote>
+<h2 id="c中值的类别">C++中值的类别</h2>
+<blockquote>
+<p>https://paul.pub/cpp-value-category/</p>
+</blockquote>
+<h2 id="misc">Misc</h2>
+<p>polymorphism with smart opinters</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">static_pointer_cast</span><br><span class="line">dynamic_pointer_cast</span><br></pre></td></tr></table></figure>
+<p>子类对象被cast成父类，成员函数调的是子类的函数</p>
+<h2 id="google-c-style">Google C++ Style</h2>
 <p>https://google.github.io/styleguide/cppguide.html</p>
 <h2 id="short-tutorial">Short Tutorial</h2>
 <p>https://www.thegeekstuff.com/2016/02/c-plus-plus-11/</p>
@@ -222,6 +461,88 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">unique_ptr&lt;someType&gt; suniquePtr(new someType(args));</span><br><span class="line">...</span><br><span class="line">uniquePtr.release();</span><br><span class="line"></span><br><span class="line">shared_ptr&lt;someType&gt; somePtr(new someType(args));</span><br><span class="line"></span><br><span class="line">weak_ptr&lt;someType&gt; weakPtr= somePtr;</span><br></pre></td></tr></table></figure>
 <h3 id="tuple">Tuple</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auto tuple = make_tuple(“triangle”, ‘t’, 10, 15, 20);</span><br></pre></td></tr></table></figure>
+<h1 id="菜鸟教程">菜鸟教程</h1>
+<h2 id="c">C</h2>
+<p>存储类</p>
+<ul>
+<li>auto：默认的存储类</li>
+<li>register：放寄存器，无地址</li>
+<li>static：
+<ul>
+<li>修饰局部变量：在函数调用之间保持局部变量的值</li>
+<li>修饰全局变量：变量的作用域限制在声明它的文件内（修饰函数同理）</li>
+</ul></li>
+<li>extern：
+<ul>
+<li>修饰局部变量：引用全局变量</li>
+<li>修饰全局变量：引用另一个文件的变量</li>
+</ul></li>
+</ul>
+<p>静态数组</p>
+<ul>
+<li><code>int a[10];</code></li>
+<li>存储在栈或者全局数据区</li>
+<li>大小固定</li>
+<li>生命周期取决于作用域</li>
+<li><code>sizeof(a)</code> 返回占用字节数</li>
+<li>很多情况下，<code>a</code>等价于<code>a[0]</code> 的指针</li>
+</ul>
+<p>动态数组</p>
+<ul>
+<li><p><code>int *a = (int *)malloc(10 * sizeof(int));</code></p></li>
+<li><p>存储在堆，用<code>free(a);</code>释放内存</p></li>
+<li><p>大小可变，用<code>realloc</code>重新分配内存</p>
+<p><code>a = (int *)realloc(a, 20 * sizeof(int));</code></p></li>
+</ul>
+<p>枚举</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">enum DAY&#123;</span><br><span class="line">      MON=1, TUE, WED, THU, FRI, SAT, SUN</span><br><span class="line">&#125;;</span><br><span class="line">enum DAY day = WED;</span><br></pre></td></tr></table></figure>
+<p>指针数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const char *names[] = &#123;&quot;Zara Ali&quot;,&quot;Hina Ali&quot;,&quot;Nuha Ali&quot;,&quot;Sara Ali&quot;&#125;;</span><br></pre></td></tr></table></figure>
+<p>函数指针</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int (*fun_ptr)(int, int) = fun;</span><br><span class="line">fun_ptr(x, y);</span><br></pre></td></tr></table></figure>
+<p>函数指针数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void (*fun_ptr_arr[])(int, int) = &#123;add, subtract, multiply&#125;;</span><br></pre></td></tr></table></figure>
+<p>函数指针可以作为函数的参数</p>
+<p>命令行参数</p>
+<ul>
+<li><p><code>argc</code> 表示传入参数的个数，没有参数时值为1</p></li>
+<li><p><code>argv[0]</code> 表示程序的名称</p></li>
+</ul>
+<h2 id="c-1">C++</h2>
+<p>类成员默认为private</p>
+<p>构造函数，析构函数，复制构造函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">classname(int x, int y): x(x), y(y) &#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br><span class="line">~classname() &#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br><span class="line">classname (const classname &amp;obj) &#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>友元函数，友元类</p>
+<p>public：任何</p>
+<p>private：自己，友元</p>
+<p>protected：自己，友元，子类</p>
+<p>public继承：不变</p>
+<p>protected继承：public变protected</p>
+<p>private继承：全变private</p>
+<p>内联函数 inline</p>
+<p>this：</p>
+<ul>
+<li>指向当前对象</li>
+<li>只能成员函数中使用</li>
+</ul>
+<p>类的静态变量</p>
+<ul>
+<li>在类外使用::初始化</li>
+</ul>
+<p>类的静态函数</p>
+<p>虚函数 virtual</p>
+<ul>
+<li>告诉编译器不要静态链接</li>
+<li>动态链接，后期绑定</li>
+<li>允许用基类的指针来调用子类的这个函数</li>
+</ul>
+<p>纯虚函数：只有函数声明没有函数定义</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virtual int f(int, int) = 0;</span><br></pre></td></tr></table></figure>
+<p>抽象类：有纯虚函数的类，不能实例化对象</p>
+<p>泛型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">template &lt;typename T&gt;</span><br><span class="line">template &lt;class T&gt;</span><br></pre></td></tr></table></figure>
+<p><code>explicit</code>构造函数：禁止隐式类型转换</p>
+<p><code>const</code>成员函数：不会修改成员变量</p>
 
       
     </div>
@@ -264,10 +585,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2023-07-18 00:00:00 / Modified: 16:35:52" itemprop="dateCreated datePublished" datetime="2023-07-18T00:00:00+08:00">2023-07-18</time>
+              <time title="Created: 2023-07-18 00:00:00" itemprop="dateCreated datePublished" datetime="2023-07-18T00:00:00+08:00">2023-07-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-08-02 18:39:04" itemprop="dateModified" datetime="2023-08-02T18:39:04+08:00">2023-08-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -290,13 +617,15 @@
 
       
           <blockquote>
-<p>Git tutorial:
-https://docs.github.com/en/get-started/using-git/about-git</p>
-<p>Git docs: https://git-scm.com/docs</p>
+<p>Reference: <a
+target="_blank" rel="noopener" href="https://docs.github.com/en/get-started/using-git/about-git">Git
+tutorial</a>, <a target="_blank" rel="noopener" href="https://git-scm.com/docs">Git docs</a> <a
+target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2">Git Book</a></p>
 </blockquote>
 <h3 id="configuration">Configuration</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy 127.0.0.1:10809</span><br><span class="line">git config --global https.proxy 127.0.0.1:10809</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name sdcgvhgj</span><br><span class="line">git config --global user.email sdcgvhgj@gmail.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.editor &quot;nano -w&quot;</span><br></pre></td></tr></table></figure>
 <p>where <code>--global</code> means it works for all repositories</p>
 <h4 id="ssh-key">SSH key</h4>
 <ol type="1">
@@ -308,16 +637,18 @@ https://docs.github.com/en/get-started/using-git/about-git</p>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /root/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
 <ol start="3" type="1">
-<li>Add your key at https://github.com/settings/keys</li>
+<li>Add your key at <a target="_blank" rel="noopener" href="https://github.com/settings/keys">GitHub
+key settings</a></li>
 </ol>
 <h3 id="clone">Clone</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/USERNAME/REPOSITORY.git</span><br></pre></td></tr></table></figure>
+<p>What this does:</p>
 <ul>
-<li>Make new folder</li>
-<li>Initialize as a Git repository</li>
-<li>Create remote <code>origin</code></li>
-<li>Fetch all branches</li>
-<li>Check out the default branch</li>
+<li>make new folder</li>
+<li>initialize as a Git repository</li>
+<li>create remote <code>origin</code></li>
+<li>fetch all branches</li>
+<li>check out the default branch</li>
 </ul>
 <h3 id="add-remote">Add Remote</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add upstream REMOTE_URL</span><br></pre></td></tr></table></figure>
@@ -367,11 +698,267 @@ you</p></li>
 <code>.git</code> file in current folder)</p>
 <p><code>git status</code> shows the status of changes as untracked,
 modified, or staged</p>
-<p><code>git branch</code> shows the branches being worked on
+<p><code>git log --graph</code> show log</p>
+<p><code>git branch -v</code> shows the branches being worked on
 locally</p>
+<p><code>git branch BRANCH-NAME</code> create branch</p>
+<p><code>git branch -d BRANCH-NAME</code> delete branch</p>
 <p><code>git branch -M BRANCH-NAME</code> rename the current branch to
 <code>BRANCH-NAME</code></p>
 <p><code>git remote -v</code> shows remote URLs</p>
+<p><code>git checkout BRANCH-NAME</code> switch branch</p>
+<p><code>git tag</code> list all tags</p>
+<p><code>git reset --hard HEAD</code> throw all uncommitted changes</p>
+<p><code>git commit --amend -m "commit info"</code></p>
+<p><code>git rebase main</code> rebase current branch to
+<code>main</code></p>
+<p><code>git stash save "info"</code> save uncommitted files</p>
+<p><code>git stash pop</code></p>
+<p><code>git revert</code></p>
+<p><code>git reflog</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.sdcgvhgj.top/2023/07/18/gdb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="sdcgvhgj">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sdcgvhgj's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/07/18/gdb/" class="post-title-link" itemprop="url">GDB Basic Usage</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-07-18 00:00:00" itemprop="dateCreated datePublished" datetime="2023-07-18T00:00:00+08:00">2023-07-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-08-03 14:52:30" itemprop="dateModified" datetime="2023-08-03T14:52:30+08:00">2023-08-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Development-Related/" itemprop="url" rel="index"><span itemprop="name">Development Related</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">g++ gdbdemo.cpp -ggdb -o main</span><br><span class="line">gdb main</span><br></pre></td></tr></table></figure>
+<p>https://stackoverflow.com/questions/41420814/how-to-view-the-internal-data-of-a-smart-pointer-inside-gdb</p>
+<p>cntr+xa: TUI</p>
+<h2 id="basics">basics</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">run FILE_NAME</span><br><span class="line">start //break main &amp; run</span><br><span class="line">break FILE_NAME:FUNCTION_NAME</span><br><span class="line">where //trace along with the line number.</span><br><span class="line">next</span><br><span class="line">list</span><br><span class="line">list ROW_NUMBER</span><br><span class="line">print VARIABLE_NAME</span><br><span class="line">print VARIABLE_NAME=VALUE</span><br><span class="line">info locals</span><br><span class="line">continue</span><br><span class="line">disable</span><br><span class="line">make FILE_NAME</span><br><span class="line">restart</span><br></pre></td></tr></table></figure>
+<h2 id="others">others</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">info gdb 					//Manual</span><br><span class="line">info locals 				        //Vars in local scope</span><br><span class="line">info variables				//Vars declared outside current scope</span><br><span class="line">info functions				//Names and datatypes of all defined functions</span><br><span class="line">info b 						//List all breakpoints</span><br><span class="line">break funcName				//Set breakpoint at function funcName (short: b funcName)</span><br><span class="line">break file::line			        //Set breakpoint at line in file</span><br><span class="line">layout next					//Cycle through the layouts of gdb</span><br><span class="line">p var 						//Print the value of variable var</span><br><span class="line">p var = value 			        	//Force set value to a var</span><br><span class="line">run 						        //Start the program</span><br><span class="line">start 						//Synonymous to (b main &amp;&amp; run). Puts temporary b at main</span><br><span class="line">next 						//Execute the current line in source (short: n)</span><br><span class="line">step 						//Step into function call at current line (short: s)</span><br><span class="line">finish						//Finish the execution of current function (short: fin)</span><br><span class="line">continue					//Resume execution (After a breakpoint) (short: c)</span><br><span class="line">refresh 					        //Repaint the interface (To fix corrupted interface)</span><br><span class="line">shell cmd 					//Run shell command cmd from gdb prompt</span><br><span class="line">python gdb.execute(cmd)		//Run a gdb command cmd from python prompt</span><br><span class="line">set print pretty on			//Enable pretty printing</span><br><span class="line">							  (Put in ~/.gdbinit)</span><br><span class="line">$ gdb -c core.num			//Examine the dumped core file from a SIGSEGV(shell command)</span><br><span class="line">bt							//Print backtrace</span><br><span class="line">break _exit 				        //Breakpoint at exit of program</span><br><span class="line">whatis expr					//Print datatype of expr</span><br><span class="line">ptype expr					//Detailed print of datatype of expr</span><br><span class="line">watch var 					//Stop when var is modified</span><br><span class="line">watch -l foo				        //Watch foo loaction</span><br><span class="line">rwatch foo					//Stop when foo is read</span><br><span class="line">watch foo if foo&gt;10			//Watch foo conditionally</span><br><span class="line">delete						//Delete all breakpoints</span><br><span class="line">delete breakpoint_no		        //Delete breakpoint breakpoint_no</span><br><span class="line">command breakpoint_no		//Run user listed commands when breakpoint is hit</span><br><span class="line">							  (End list of commands with &#x27;end&#x27;)</span><br><span class="line">file executable 			        //Load the executable for debugging from inside gdb</span><br><span class="line">quit						        //Quit (short: q)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.sdcgvhgj.top/2023/05/18/selfhost/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="sdcgvhgj">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sdcgvhgj's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/05/18/selfhost/" class="post-title-link" itemprop="url">Selfuse Script for Selfhost Services Deployment</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-05-18 00:00:00" itemprop="dateCreated datePublished" datetime="2023-05-18T00:00:00+08:00">2023-05-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-08-03 14:54:47" itemprop="dateModified" datetime="2023-08-03T14:54:47+08:00">2023-08-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%8E%A9%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">玩具</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">echo &quot;password:&quot;</span><br><span class="line">read password</span><br><span class="line">echo &quot;your password is: $password&quot;</span><br><span class="line"></span><br><span class="line">set -x</span><br><span class="line">apt update -y</span><br><span class="line"># apt upgrade -y</span><br><span class="line"></span><br><span class="line">echo ----------Trojan----------</span><br><span class="line">cd /root</span><br><span class="line">mkdir trojan</span><br><span class="line">cd trojan</span><br><span class="line">wget https://github.com/p4gefau1t/trojan-go/releases/download/v0.10.6/trojan-go-linux-amd64.zip</span><br><span class="line">apt install -y unzip</span><br><span class="line">unzip trojan-go-linux-amd64.zip</span><br><span class="line">curl https://get.acme.sh | sh</span><br><span class="line">apt install -y socat </span><br><span class="line">ln -s /root/.acme.sh/acme.sh /usr/local/bin/acme.sh</span><br><span class="line">acme.sh --register-account -m sdcgvhgj@qq.com</span><br><span class="line">acme.sh --issue -d sdcgvhgj.top --standalone -k ec-256</span><br><span class="line">acme.sh --installcert -d sdcgvhgj.top --ecc --key-file /root/trojan/server.key --fullchain-file /root/trojan/server.crt</span><br><span class="line">echo &quot;</span><br><span class="line">run-type: server</span><br><span class="line">local-addr: 0.0.0.0</span><br><span class="line">local-port: 10000</span><br><span class="line">remote-addr: tcs.nju.edu.cn</span><br><span class="line">remote-port: 80</span><br><span class="line">password:</span><br><span class="line">  - $password</span><br><span class="line">ssl:</span><br><span class="line">  cert: /root/trojan/server.crt</span><br><span class="line">  key: /root/trojan/server.key</span><br><span class="line">  sni: sdcgvhgj.top</span><br><span class="line">&quot; &gt; config.yaml</span><br><span class="line">nohup ./trojan-go &gt; trojan.log 2&gt;&amp;1 &amp;</span><br><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 10000:12000 -j REDIRECT --to-port 10000</span><br><span class="line">iptables -t nat -A PREROUTING -p udp --dport 10000:12000 -j REDIRECT --to-port 10000</span><br><span class="line"># (crontab -l; echo &quot;@reboot iptables -t nat -A PREROUTING -p tcp --dport 10000:12000 -j REDIRECT --to-port 10000&quot;) | crontab -</span><br><span class="line"># (crontab -l; echo &quot;@reboot iptables -t nat -A PREROUTING -p udp --dport 10000:12000 -j REDIRECT --to-port 10000&quot;) | crontab -</span><br><span class="line">(crontab -l; echo &quot;@reboot nohup /root/trojan/trojan-go --config /root/trojan/config.yaml &gt; /root/trojan/trojan.log 2&gt;&amp;1 &amp;&quot;) | crontab -</span><br><span class="line"># iptables -t nat -L PREROUTING -nv --line-number</span><br><span class="line"></span><br><span class="line">echo ----------Aria----------</span><br><span class="line">apt install -y aria2</span><br><span class="line">mkdir /root/.aria2</span><br><span class="line">touch /root/.aria2/aria2.session</span><br><span class="line">touch /root/.aria2/aria2.conf</span><br><span class="line">mkdir /home/download</span><br><span class="line">echo &quot;</span><br><span class="line">dir=/home/download</span><br><span class="line">input-file=/root/.aria2/aria2.session</span><br><span class="line">save-session=/root/.aria2/aria2.session</span><br><span class="line">log=/root/.aria2/aria2.log</span><br><span class="line">continue=true</span><br><span class="line">enable-rpc=true</span><br><span class="line">rpc-secret=$password</span><br><span class="line">rpc-listen-port=6800</span><br><span class="line">rpc-allow-origin-all=true</span><br><span class="line">rpc-listen-all=true</span><br><span class="line">#rpc-secure=true</span><br><span class="line">#rpc-certificate=/root/trojan/server.cer</span><br><span class="line">#rpc-private-key=/root/trojan/server.key</span><br><span class="line">&quot; &gt; /root/.aria2/aria2.conf</span><br><span class="line">aria2c --daemon=true --conf-path=/root/.aria2/aria2.conf</span><br><span class="line"></span><br><span class="line">echo ----------Filebrowser----------</span><br><span class="line">cd /root</span><br><span class="line">mkdir filebrowser</span><br><span class="line">cd filebrowser</span><br><span class="line">wget https://github.com/filebrowser/filebrowser/releases/download/v2.23.0/linux-amd64-filebrowser.tar.gz</span><br><span class="line">tar -zxvf linux-amd64-filebrowser.tar.gz</span><br><span class="line">./filebrowser config init</span><br><span class="line">./filebrowser config set --address 0.0.0.0 --baseurl &#x27;/f&#x27; --port 10001 --log ./filebrowser.log --root /home</span><br><span class="line">./filebrowser users add admin $password --perm.admin</span><br><span class="line">nohup ./filebrowser &gt; /dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">echo ----------Docker----------</span><br><span class="line">for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done</span><br><span class="line">apt update</span><br><span class="line">apt install -y ca-certificates curl gnupg</span><br><span class="line">install -m 0755 -d /etc/apt/keyrings</span><br><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</span><br><span class="line">chmod a+r /etc/apt/keyrings/docker.gpg</span><br><span class="line">echo \</span><br><span class="line">  &quot;deb [arch=&quot;$(dpkg --print-architecture)&quot; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \</span><br><span class="line">  &quot;$(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;)&quot; stable&quot; | \</span><br><span class="line">  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null</span><br><span class="line">apt update</span><br><span class="line">apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span><br><span class="line"></span><br><span class="line">echo ----------Nginx----------</span><br><span class="line">apt install -y nginx</span><br><span class="line">cd /var/www/html</span><br><span class="line">mkdir a</span><br><span class="line">cd a</span><br><span class="line">wget https://github.com/mayswind/AriaNg/releases/download/1.3.3/AriaNg-1.3.3.zip</span><br><span class="line">unzip AriaNg-1.3.3.zip</span><br><span class="line">mkdir /home/files</span><br><span class="line">echo &#x27;</span><br><span class="line">server &#123;</span><br><span class="line">	listen 443 ssl;</span><br><span class="line">	server_name sdcgvhgj.top;</span><br><span class="line">	ssl_certificate /root/trojan/server.crt;</span><br><span class="line">	ssl_certificate_key /root/trojan/server.key;</span><br><span class="line">	root /var/www/html;</span><br><span class="line">	location / &#123;</span><br><span class="line">		try_files $uri $uri/ =404;</span><br><span class="line">	&#125;</span><br><span class="line">	location /a &#123;</span><br><span class="line">		try_files $uri $uri/ =404;</span><br><span class="line">	&#125;</span><br><span class="line">	location /f &#123;</span><br><span class="line">		proxy_pass http://127.0.0.1:10001;</span><br><span class="line">		proxy_set_header Host $host;</span><br><span class="line">		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">		proxy_set_header X-Real-Ip $remote_addr;</span><br><span class="line">	&#125;</span><br><span class="line">	location /files &#123;</span><br><span class="line">		autoindex on;</span><br><span class="line">		root /home;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">	listen 80;</span><br><span class="line">	root /var/www/html;</span><br><span class="line">	server_name sdcgvhgj.top;</span><br><span class="line">	location / &#123;</span><br><span class="line">		rewrite ^(.*)$ https://$host$1 permanent;</span><br><span class="line">	&#125;</span><br><span class="line">	location /a &#123;</span><br><span class="line">		try_files $uri $uri/ =404;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x27; &gt; /etc/nginx/sites-enabled/default</span><br><span class="line">nginx -t</span><br><span class="line">systemctl start nginx</span><br><span class="line"></span><br><span class="line">echo ----------NextCloud----------</span><br><span class="line">systemctl stop nginx</span><br><span class="line">acme.sh --issue -d cloud.sdcgvhgj.top --standalone -k ec-256</span><br><span class="line">acme.sh --installcert -d cloud.sdcgvhgj.top --ecc --key-file /root/trojan/cloud.key --fullchain-file /root/trojan/cloud.crt</span><br><span class="line">docker run \</span><br><span class="line">--detach \</span><br><span class="line">--sig-proxy=false \</span><br><span class="line">--name nextcloud-aio-mastercontainer \</span><br><span class="line">--restart always \</span><br><span class="line">--publish 20001:8080 \</span><br><span class="line">--env APACHE_PORT=10002 \</span><br><span class="line">--env APACHE_IP_BINDING=0.0.0.0 \</span><br><span class="line">--volume nextcloud_aio_mastercontainer:/mnt/docker-aio-config \</span><br><span class="line">--volume /var/run/docker.sock:/var/run/docker.sock:ro \</span><br><span class="line">nextcloud/all-in-one:latest</span><br><span class="line">echo &#x27;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    listen [::]:80;            # comment to disable IPv6</span><br><span class="line"></span><br><span class="line">    if ($scheme = &quot;http&quot;) &#123;</span><br><span class="line">        return 301 https://$host$request_uri;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    listen 443 ssl http2;      # for nginx versions below v1.25.1</span><br><span class="line">    listen [::]:443 ssl http2; # for nginx versions below v1.25.1 - comment to disable IPv6</span><br><span class="line"></span><br><span class="line">    # listen 443 ssl;      # for nginx v1.25.1+</span><br><span class="line">    # listen [::]:443 ssl; # for nginx v1.25.1+ - keep comment to disable IPv6</span><br><span class="line"></span><br><span class="line">    server_name cloud.sdcgvhgj.top;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:10002$request_uri;</span><br><span class="line"></span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header X-Forwarded-Port $server_port;</span><br><span class="line">        proxy_set_header X-Forwarded-Scheme $scheme;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header Accept-Encoding &quot;&quot;;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">    </span><br><span class="line">        client_body_buffer_size 512k;</span><br><span class="line">        proxy_read_timeout 86400s;</span><br><span class="line">        client_max_body_size 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ssl_certificate /root/trojan/cloud.crt;</span><br><span class="line">    ssl_certificate_key /root/trojan/cloud.key;</span><br><span class="line"> </span><br><span class="line">    ssl_session_timeout 1d;</span><br><span class="line">    ssl_session_cache shared:MozSSL:10m; # about 40000 sessions</span><br><span class="line">    ssl_session_tickets off;</span><br><span class="line"></span><br><span class="line">    ssl_protocols TLSv1.2 TLSv1.3;</span><br><span class="line">    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line">&#125;</span><br><span class="line">&#x27; &gt; /etc/nginx/sites-enabled/cloud</span><br><span class="line">nginx -t</span><br><span class="line">systemctl start nginx</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.sdcgvhgj.top/2023/05/18/%E7%9B%B4%E6%92%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="sdcgvhgj">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sdcgvhgj's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/05/18/%E7%9B%B4%E6%92%AD/" class="post-title-link" itemprop="url">直播</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-05-18 00:00:00" itemprop="dateCreated datePublished" datetime="2023-05-18T00:00:00+08:00">2023-05-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-08-03 14:58:34" itemprop="dateModified" datetime="2023-08-03T14:58:34+08:00">2023-08-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%8E%A9%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">玩具</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>https://lele1894.blogspot.com/2022/04/blog-post.html</p>
+</blockquote>
+<p>youtube小姐姐</p>
+<ul>
+<li><p>https://www.youtube.com/watch?v=XbkR4hWo_W8</p></li>
+<li><p>https://www.youtube.com/<span class="citation"
+data-cites="the_influencer_/videos">@the_influencer_/videos</span></p></li>
+</ul>
+<p>bilibili直播rtmp推流链接
+https://link.bilibili.com/p/center/index#/my-room/start-live</p>
+<p>OBS其直播推流及视频录制教程
+https://www.bilibili.com/read/cv6446984?spm_id_from=333.999.0.0</p>
+<h3 id="merge-two-webm-files-video-and-audio-in-ffmpeg">merge two webm
+files (video and audio) in ffmpeg</h3>
+<p>ffmpeg -i video.webm -i audio.webm -c copy output.mkv</p>
 
       
     </div>
@@ -1635,14 +2222,14 @@ class="math inline">\(C\)</span></p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
